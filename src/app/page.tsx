@@ -11,6 +11,7 @@ export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [trainingFilter, setTrainingFilter] = useState<TrainingType | 'all'>('all');
+  const [beltFilter, setBeltFilter] = useState<'white' | 'blue' | 'purple' | 'brown' | 'black' | 'all'>('all');
 
   useEffect(() => {
     checkUser();
@@ -25,16 +26,18 @@ export default function Home() {
   }
 
   function loadWeekData(week: number) {
-    const pos = getPositionForWeek(week);
+    const pos = getPositionForWeek(week, beltFilter);
     setPosition(pos);
   }
 
   const filteredPositions = curriculumPositions.filter(pos => 
-    trainingFilter === 'all' || pos.trainingType === trainingFilter || pos.trainingType === 'both'
+    (trainingFilter === 'all' || pos.trainingType === trainingFilter || pos.trainingType === 'both') &&
+    (beltFilter === 'all' || pos.beltRequired === beltFilter)
   );
 
   const filteredTechniques = position?.techniques.filter(tech => 
-    trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both'
+    (trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both') &&
+    (beltFilter === 'all' || tech.beltRequired === beltFilter)
   );
 
   async function handleSignIn() {
@@ -91,7 +94,7 @@ export default function Home() {
         </div>
         
         <div className="flex items-center justify-center gap-2 bg-white p-4 rounded-lg shadow">
-          <span className="text-sm font-medium text-gray-700 mr-2">Filter:</span>
+          <span className="text-sm font-medium text-gray-700 mr-2">Training:</span>
           <button
             onClick={() => setTrainingFilter('all')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
@@ -132,6 +135,23 @@ export default function Home() {
           >
             Both
           </button>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 bg-white p-4 rounded-lg shadow">
+          <span className="text-sm font-medium text-gray-700 mr-2">Belt:</span>
+          {['all', 'white', 'blue', 'purple', 'brown', 'black'].map((belt) => (
+            <button
+              key={belt}
+              onClick={() => setBeltFilter(belt as any)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                beltFilter === belt 
+                  ? 'bg-yellow-600 text-white' 
+                  : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
+              }`}
+            >
+              {belt === 'all' ? 'All' : belt.charAt(0).toUpperCase() + belt.slice(1)}
+            </button>
+          ))}
         </div>
       </div>
 

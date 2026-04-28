@@ -232,22 +232,53 @@ export const curriculumPositions: Position[] = [
 ];
 
 // 52-week rotating schedule - maps week numbers to position IDs
-// Only includes gi and both type positions for the base schedule
-export function generate52WeekSchedule(): Record<number, number> {
+// Prioritizes white belt positions while ensuring variety
+export function generate52WeekSchedule(beltLevel: 'white' | 'blue' | 'purple' | 'brown' | 'black' | 'all' = 'all'): Record<number, number> {
   const schedule: Record<number, number> = {};
-  const giPositions = curriculumPositions.filter(p => p.trainingType !== 'no-gi');
-  const positionCount = giPositions.length;
+  
+  // Filter positions based on belt level
+  let availablePositions = curriculumPositions.filter(p => p.trainingType !== 'no-gi');
+  if (beltLevel !== 'all') {
+    const beltOrder = ['white', 'blue', 'purple', 'brown', 'black'];
+    const maxBeltIndex = beltOrder.indexOf(beltLevel);
+    availablePositions = availablePositions.filter(p => 
+      beltOrder.indexOf(p.beltRequired) <= maxBeltIndex
+    );
+  }
+  
+  const whiteBeltPositions = availablePositions.filter(p => p.beltRequired === 'white');
+  const higherBeltPositions = availablePositions.filter(p => p.beltRequired !== 'white');
+  
+  // Ensure white belt positions appear every 2 weeks, higher belt positions fill gaps
+  let whiteIndex = 0;
+  let higherIndex = 0;
   
   for (let week = 1; week <= 52; week++) {
-    // Rotate through positions, repeating after all positions covered
-    schedule[week] = giPositions[(week - 1) % positionCount].id;
+    // Every other week (or when we run out of higher belt positions), show white belt content
+    if (week % 2 === 1 || higherIndex >= higherBeltPositions.length) {
+      if (whiteBeltPositions.length > 0) {
+        schedule[week] = whiteBeltPositions[whiteIndex % whiteBeltPositions.length].id;
+        whiteIndex++;
+      } else if (higherBeltPositions.length > 0) {
+        schedule[week] = higherBeltPositions[higherIndex % higherBeltPositions.length].id;
+        higherIndex++;
+      }
+    } else {
+      if (higherBeltPositions.length > 0) {
+        schedule[week] = higherBeltPositions[higherIndex % higherBeltPositions.length].id;
+        higherIndex++;
+      } else if (whiteBeltPositions.length > 0) {
+        schedule[week] = whiteBeltPositions[whiteIndex % whiteBeltPositions.length].id;
+        whiteIndex++;
+      }
+    }
   }
   
   return schedule;
 }
 
-export function getPositionForWeek(week: number): Position | undefined {
-  const schedule = generate52WeekSchedule();
+export function getPositionForWeek(week: number, beltLevel: 'white' | 'blue' | 'purple' | 'brown' | 'black' | 'all' = 'all'): Position | undefined {
+  const schedule = generate52WeekSchedule(beltLevel);
   const adjustedWeek = ((week - 1) % 52) + 1;
   const positionId = schedule[adjustedWeek];
   return curriculumPositions.find(p => p.id === positionId);
