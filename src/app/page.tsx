@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
-import { getCurrentWeek, getPositionForWeek, curriculumPositions } from '@/lib/curriculum-data';
+import { getCurrentWeek, getPositionForWeek, curriculumPositions, TrainingType } from '@/lib/curriculum-data';
 import type { Position } from '@/lib/curriculum-data';
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
   const [position, setPosition] = useState<Position | undefined>();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [trainingFilter, setTrainingFilter] = useState<TrainingType | 'all'>('all');
 
   useEffect(() => {
     checkUser();
@@ -27,6 +28,14 @@ export default function Home() {
     const pos = getPositionForWeek(week);
     setPosition(pos);
   }
+
+  const filteredPositions = curriculumPositions.filter(pos => 
+    trainingFilter === 'all' || pos.trainingType === trainingFilter || pos.trainingType === 'both'
+  );
+
+  const filteredTechniques = position?.techniques.filter(tech => 
+    trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both'
+  );
 
   async function handleSignIn() {
     if (!supabase) { alert('Supabase not configured'); return; }
@@ -71,40 +80,102 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-8 bg-white p-4 rounded-lg shadow">
-        <button onClick={prevWeek} className="btn-secondary">← Previous Week</button>
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold">Week {currentWeek}</h2>
-          <p className="text-gray-600">of 52 (Rotating Curriculum)</p>
+      <div className="flex flex-col gap-4 mb-8">
+        <div className="flex items-center justify-between bg-white p-4 rounded-lg shadow">
+          <button onClick={prevWeek} className="btn-secondary">← Previous Week</button>
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold">Week {currentWeek}</h2>
+            <p className="text-gray-600">of 52 (Rotating Curriculum)</p>
+          </div>
+          <button onClick={nextWeek} className="btn-secondary">Next Week →</button>
         </div>
-        <button onClick={nextWeek} className="btn-secondary">Next Week →</button>
+        
+        <div className="flex items-center justify-center gap-2 bg-white p-4 rounded-lg shadow">
+          <span className="text-sm font-medium text-gray-700 mr-2">Filter:</span>
+          <button
+            onClick={() => setTrainingFilter('all')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              trainingFilter === 'all' 
+                ? 'bg-gray-900 text-white' 
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setTrainingFilter('gi')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              trainingFilter === 'gi' 
+                ? 'bg-blue-600 text-white' 
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+            }`}
+          >
+            Gi
+          </button>
+          <button
+            onClick={() => setTrainingFilter('no-gi')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              trainingFilter === 'no-gi' 
+                ? 'bg-purple-600 text-white' 
+                : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+            }`}
+          >
+            No-Gi
+          </button>
+          <button
+            onClick={() => setTrainingFilter('both')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              trainingFilter === 'both' 
+                ? 'bg-green-600 text-white' 
+                : 'bg-green-100 text-green-700 hover:bg-green-200'
+            }`}
+          >
+            Both
+          </button>
+        </div>
       </div>
 
       {position && (
         <div className="bg-white p-6 rounded-lg shadow mb-8">
-          <div className="mb-4">
+          <div className="mb-4 flex items-center gap-2 flex-wrap">
             <span className="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
               {position.category.replace('_', ' ').toUpperCase()}
             </span>
-            <span className="inline-block bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full ml-2">
+            <span className="inline-block bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full">
               {position.beltRequired.toUpperCase()}+
+            </span>
+            <span className={`inline-block text-sm px-3 py-1 rounded-full ${
+              position.trainingType === 'gi' ? 'bg-blue-100 text-blue-800' :
+              position.trainingType === 'no-gi' ? 'bg-purple-100 text-purple-800' :
+              'bg-green-100 text-green-800'
+            }`}>
+              {position.trainingType.toUpperCase()}
             </span>
           </div>
           <h3 className="text-2xl font-bold mb-4">{position.name}</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {position.techniques.map((tech) => (
+            {(filteredTechniques || position.techniques).map((tech) => (
               <div key={tech.id} className="border border-gray-200 rounded-lg p-4 hover:border-blue-500 transition">
                 <div className="flex items-start justify-between mb-2">
                   <h4 className="font-semibold text-lg">{tech.name}</h4>
-                  <span className={`text-xs px-2 py-1 rounded ${
-                    tech.type === 'attack' ? 'bg-red-100 text-red-800' :
-                    tech.type === 'escape' ? 'bg-green-100 text-green-800' :
-                    tech.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-blue-100 text-blue-800'
-                  }`}>
-                    {tech.type}
-                  </span>
+                  <div className="flex gap-1">
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      tech.type === 'attack' ? 'bg-red-100 text-red-800' :
+                      tech.type === 'escape' ? 'bg-green-100 text-green-800' :
+                      tech.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-blue-100 text-blue-800'
+                    }`}>
+                      {tech.type}
+                    </span>
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      tech.trainingType === 'gi' ? 'bg-blue-100 text-blue-800' :
+                      tech.trainingType === 'no-gi' ? 'bg-purple-100 text-purple-800' :
+                      'bg-green-100 text-green-800'
+                    }`}>
+                      {tech.trainingType}
+                    </span>
+                  </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-2">{tech.description}</p>
                 <span className="text-xs text-gray-500">Required: {tech.beltRequired}+</span>
@@ -117,7 +188,7 @@ export default function Home() {
       <div className="bg-white p-6 rounded-lg shadow">
         <h3 className="text-xl font-bold mb-4">Full Curriculum Overview</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {curriculumPositions.map((pos) => (
+          {filteredPositions.map((pos) => (
             <div
               key={pos.id}
               onClick={() => setCurrentWeek(((pos.id - 1) % 52) + 1)}
@@ -125,7 +196,16 @@ export default function Home() {
             >
               <div className="flex items-center justify-between mb-2">
                 <h4 className="font-semibold">{pos.name}</h4>
-                <span className="text-xs bg-gray-100 px-2 py-1 rounded">{pos.techniques.length} techniques</span>
+                <div className="flex gap-2">
+                  <span className="text-xs bg-gray-100 px-2 py-1 rounded">{pos.techniques.length} techniques</span>
+                  <span className={`text-xs px-2 py-1 rounded ${
+                    pos.trainingType === 'gi' ? 'bg-blue-100 text-blue-800' :
+                    pos.trainingType === 'no-gi' ? 'bg-purple-100 text-purple-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {pos.trainingType}
+                  </span>
+                </div>
               </div>
               <p className="text-sm text-gray-600">{pos.category.replace('_', ' ')}</p>
             </div>
