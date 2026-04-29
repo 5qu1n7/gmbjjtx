@@ -328,10 +328,15 @@ export default function Home() {
           <h3 className="text-lg font-bold mb-4">Full Curriculum Overview</h3>
           <p className="text-sm text-gray-500 mb-4">Click a position to jump to its week.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {filteredPositions.map(pos => (
+             {filteredPositions.map(pos => (
               <button
                 key={pos.id}
-                onClick={() => { setPinnedPosition(pos); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                onClick={() => { 
+                  // Find the full position object from the unfiltered list to ensure we have the right one
+                  const fullPos = curriculumPositions.find(p => p.id === pos.id);
+                  if (fullPos) setPinnedPosition(fullPos); 
+                  window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                }}
                 className={`text-left border rounded-xl p-4 hover:border-blue-400 hover:bg-blue-50 transition ${
                   activePosition?.id === pos.id ? 'border-blue-400 bg-blue-50' : 'border-gray-200'
                 }`}

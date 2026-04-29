@@ -14,18 +14,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50 relative">
+      <body className="min-h-screen bg-white relative">
         {/* Full-screen watermark background */}
-        <div
-          className="fixed inset-0 z-0 pointer-events-none"
-          style={{
-            backgroundImage: "url('/gustavo-machado.jpg')",
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            opacity: 0.08,
-          }}
-        />
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          <img
+            src="/gustavo-machado.jpg"
+            alt="Gustavo Machado"
+            className="absolute inset-0 w-full h-full object-contain"
+            style={{ opacity: 0.08 }}
+          />
+        </div>
         <div className="relative z-10">
           <Navigation />
           {children}
