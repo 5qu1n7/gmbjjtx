@@ -30,8 +30,7 @@ const ALL_TECHNIQUES = curriculumPositions.flatMap(p => p.techniques);
 
 export default function Home() {
   const [currentWeek, setCurrentWeek] = useState(getCurrentWeek());
-  const [position, setPosition] = useState<Position | undefined>();
-  const [pinnedPosition, setPinnedPosition] = useState<Position | null>(null);
+  const [selectedPositionId, setSelectedPositionId] = useState<number | null>(null);
   const [user, setUser] = useState<any>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [trainingFilter, setTrainingFilter] = useState<TrainingType | 'all'>('all');
@@ -42,10 +41,6 @@ export default function Home() {
   useEffect(() => {
     checkUser();
   }, []);
-
-  useEffect(() => {
-    setPosition(getPositionForWeek(currentWeek, beltFilter));
-  }, [currentWeek, beltFilter]);
 
   async function checkUser() {
     if (!supabase) { setAuthChecked(true); loadFromLocalStorage(); return; }
@@ -128,15 +123,18 @@ export default function Home() {
     setCompletedIds(new Set());
   }
 
-  function nextWeek() { setPinnedPosition(null); setCurrentWeek(w => (w % 52) + 1); }
-  function prevWeek() { setPinnedPosition(null); setCurrentWeek(w => w === 1 ? 52 : w - 1); }
+  function nextWeek() { setSelectedPositionId(null); setCurrentWeek(w => (w % 52) + 1); }
+  function prevWeek() { setSelectedPositionId(null); setCurrentWeek(w => w === 1 ? 52 : w - 1); }
 
   const filteredPositions = curriculumPositions.filter(pos =>
     (trainingFilter === 'all' || pos.trainingType === trainingFilter || pos.trainingType === 'both') &&
     (beltFilter === 'all' || pos.beltRequired === beltFilter)
   );
 
-  const activePosition = pinnedPosition ?? position;
+  const weekPosition = getPositionForWeek(currentWeek, beltFilter);
+  const activePosition: Position | undefined = selectedPositionId
+    ? (curriculumPositions.find(p => p.id === selectedPositionId) ?? weekPosition)
+    : weekPosition;
 
   const displayTechniques = activePosition?.techniques.filter(tech =>
     (trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both') &&
@@ -197,7 +195,7 @@ export default function Home() {
         {/* Controls */}
         <div className="flex flex-col gap-3 mb-8">
           {/* Week navigator */}
-          <div className="flex items-center justify-between bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between bg-white/85 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-gray-100">
             <button onClick={prevWeek} className="btn-secondary text-sm">← Prev</button>
             <div className="text-center">
               <span className="text-2xl font-bold">Week {currentWeek}</span>
@@ -207,7 +205,7 @@ export default function Home() {
           </div>
 
           {/* Training type filter */}
-          <div className="flex items-center flex-wrap gap-2 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <div className="flex items-center flex-wrap gap-2 bg-white/85 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-gray-100">
             <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mr-1">Training:</span>
             {(['all', 'gi', 'no-gi', 'both'] as const).map(t => (
               <button
@@ -231,7 +229,7 @@ export default function Home() {
           </div>
 
           {/* Belt filter */}
-          <div className="flex items-center flex-wrap gap-2 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+          <div className="flex items-center flex-wrap gap-2 bg-white/85 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-gray-100">
             <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mr-1">Belt:</span>
             {(['all', 'white', 'blue', 'purple', 'brown', 'black'] as const).map(belt => (
               <button
@@ -247,7 +245,7 @@ export default function Home() {
 
         {/* Current week position */}
         {activePosition && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+          <div className="bg-white/85 backdrop-blur-sm rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
             <div className="flex items-center gap-2 flex-wrap mb-3">
               <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
                 {activePosition.category.replace(/_/g, ' ')}
@@ -324,19 +322,14 @@ export default function Home() {
         )}
 
         {/* Full curriculum overview */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="bg-white/85 backdrop-blur-sm rounded-xl shadow-sm border border-gray-100 p-6">
           <h3 className="text-lg font-bold mb-4">Full Curriculum Overview</h3>
-          <p className="text-sm text-gray-500 mb-4">Click a position to jump to its week.</p>
+          <p className="text-sm text-gray-500 mb-4">Click any position to view its techniques.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
              {filteredPositions.map(pos => (
               <button
                 key={pos.id}
-                onClick={() => { 
-                  // Find the full position object from the unfiltered list to ensure we have the right one
-                  const fullPos = curriculumPositions.find(p => p.id === pos.id);
-                  if (fullPos) setPinnedPosition(fullPos); 
-                  window.scrollTo({ top: 0, behavior: 'smooth' }); 
-                }}
+                onClick={() => { setSelectedPositionId(pos.id); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                 className={`text-left border rounded-xl p-4 hover:border-blue-400 hover:bg-blue-50 transition ${
                   activePosition?.id === pos.id ? 'border-blue-400 bg-blue-50' : 'border-gray-200'
                 }`}

@@ -21,7 +21,7 @@ export default function RootLayout({
             src="/gustavo-machado.jpg"
             alt="Gustavo Machado"
             className="absolute inset-0 w-full h-full object-contain"
-            style={{ opacity: 0.08 }}
+            style={{ opacity: 0.12 }}
           />
         </div>
         <div className="relative z-10">
