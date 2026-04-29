@@ -116,13 +116,6 @@ export default function Home() {
     }
   }
 
-  async function handleSignOut() {
-    if (!supabase) return;
-    await supabase.auth.signOut();
-    setUser(null);
-    setCompletedIds(new Set());
-  }
-
   function nextWeek() { setSelectedPositionId(null); setCurrentWeek(w => (w % 52) + 1); }
   function prevWeek() { setSelectedPositionId(null); setCurrentWeek(w => w === 1 ? 52 : w - 1); }
 
@@ -183,13 +176,6 @@ export default function Home() {
               </p>
             )}
           </div>
-          {authChecked && (
-            user ? (
-              <button onClick={handleSignOut} className="btn-secondary text-sm">Sign Out</button>
-            ) : (
-              <button onClick={() => setAuthModalOpen(true)} className="btn-primary text-sm">Sign In</button>
-            )
-          )}
         </div>
 
         {/* Controls */}
