@@ -149,7 +149,7 @@ export default function Home() {
 
       {/* Hero — only for logged-out visitors once auth is resolved */}
       {authChecked && !user && (
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-8 py-14">
+        <div className="bg-gradient-to-br from-gray-900/60 via-gray-800/55 to-gray-900/60 backdrop-blur-sm text-white px-8 py-14">
           <div className="max-w-6xl mx-auto">
             <p className="text-blue-400 text-sm font-semibold uppercase tracking-widest mb-3">Gustavo Machado BJJ</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
