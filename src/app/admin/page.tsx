@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
-import { curriculumPositions, type Position, type Technique } from '@/lib/curriculum-data';
+import { curriculumPositions, type Position } from '@/lib/curriculum-data';
+import Toast from '@/components/Toast';
 
 export default function AdminPage() {
   const [user, setUser] = useState<any>(null);
@@ -11,7 +12,7 @@ export default function AdminPage() {
   const [selectedWeek, setSelectedWeek] = useState(1);
   const [selectedPosition, setSelectedPosition] = useState<Position>(curriculumPositions[0]);
   const [calendarNotes, setCalendarNotes] = useState('');
-  const [saved, setSaved] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   useEffect(() => {
     checkUser();
@@ -53,10 +54,10 @@ export default function AdminPage() {
         notes: calendarNotes,
       });
 
-    if (error) alert('Error saving: ' + error.message);
-    else {
-      setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
+    if (error) {
+      setToast({ message: 'Error saving: ' + error.message, type: 'error' });
+    } else {
+      setToast({ message: `Week ${selectedWeek} saved!`, type: 'success' });
     }
   }
 
@@ -74,6 +75,8 @@ export default function AdminPage() {
   }
 
   return (
+    <>
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
     <main className="min-h-screen p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Admin - Calendar Management</h1>
       
@@ -136,13 +139,8 @@ export default function AdminPage() {
         <button onClick={handleSaveWeek} className="btn-primary w-full py-3">
           Save Week {selectedWeek} Schedule
         </button>
-
-        {saved && (
-          <div className="bg-green-50 p-4 rounded-lg text-green-800">
-            ✓ Week {selectedWeek} saved successfully!
-          </div>
-        )}
       </div>
     </main>
+    </>
   );
 }
