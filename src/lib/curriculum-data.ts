@@ -10,6 +10,7 @@ export interface Technique {
   type: 'attack' | 'escape' | 'transition' | 'drill';
   beltRequired: 'white' | 'blue' | 'purple' | 'brown' | 'black';
   trainingType: TrainingType;
+  videoUrl?: string;
 }
 
 export interface Position {
@@ -30,12 +31,12 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "both",
     techniques: [
-      { id: 1, name: "Americana", description: "Shoulder lock from mount", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 2, name: "Ezekiel", description: "Choke using gi lapel", type: "attack", beltRequired: "white", trainingType: "gi" },
-      { id: 3, name: "Armbar", description: "Arm lock extending elbow", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 4, name: "Cross Collar Choke", description: "Traditional gi choke", type: "attack", beltRequired: "white", trainingType: "gi" },
-      { id: 5, name: "Mount Escape - Bridge and Roll", description: "Basic escape by bridging", type: "escape", beltRequired: "white", trainingType: "both" },
-      { id: 6, name: "Mount Escape - Elbow Escape", description: "Shrimp to escape", type: "escape", beltRequired: "white", trainingType: "both" },
+      { id: 1, name: "Americana", description: "Shoulder lock from mount", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=9d2FcxEfMMM" },
+      { id: 2, name: "Ezekiel", description: "Choke using gi lapel", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KVnengZD1XA" },
+      { id: 3, name: "Armbar", description: "Arm lock extending elbow", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=B_dOCcWymv4" },
+      { id: 4, name: "Cross Collar Choke", description: "Traditional gi choke", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=8wLWTw8G0c0" },
+      { id: 5, name: "Mount Escape - Bridge and Roll", description: "Basic escape by bridging", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=01Fe3N1vZMY" },
+      { id: 6, name: "Mount Escape - Elbow Escape", description: "Shrimp to escape", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=WMEqsjfYGqc" },
     ]
   },
   {
@@ -45,11 +46,11 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "both",
     techniques: [
-      { id: 7, name: "Americana", description: "Shoulder lock from side", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 8, name: "Kimura", description: "Figure-four shoulder lock", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 9, name: "North-South Choke", description: "Choke from north-south", type: "attack", beltRequired: "blue", trainingType: "both" },
-      { id: 10, name: "Side Control Escape - Shrimp", description: "Create space and shrimp", type: "escape", beltRequired: "white", trainingType: "both" },
-      { id: 11, name: "Side Control Escape - Knee to Elbow", description: "Frame and recover guard", type: "escape", beltRequired: "white", trainingType: "both" },
+      { id: 7, name: "Americana", description: "Shoulder lock from side", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=HEfcXOyol2I" },
+      { id: 8, name: "Kimura", description: "Figure-four shoulder lock", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=17YpQKnIq-c" },
+      { id: 9, name: "North-South Choke", description: "Choke from north-south", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=KdnEwvlWWm0" },
+      { id: 10, name: "Side Control Escape - Shrimp", description: "Create space and shrimp", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ygfnLjP6YQU" },
+      { id: 11, name: "Side Control Escape - Knee to Elbow", description: "Frame and recover guard", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=4jxokEggr6s" },
     ]
   },
   {
@@ -59,12 +60,12 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "both",
     techniques: [
-      { id: 12, name: "Cross Collar Choke", description: "Traditional gi choke", type: "attack", beltRequired: "white", trainingType: "gi" },
-      { id: 13, name: "Armbar", description: "Arm lock from closed guard", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 14, name: "Triangle Choke", description: "Choke using legs", type: "attack", beltRequired: "blue", trainingType: "both" },
-      { id: 15, name: "Scissor Sweep", description: "Sweep using legs", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 16, name: "Hip Bump Sweep", description: "Sit-up sweep", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 17, name: "Open Guard", description: "Open guard transition", type: "transition", beltRequired: "blue", trainingType: "both" },
+      { id: 12, name: "Cross Collar Choke", description: "Traditional gi choke", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=uuyiUxsyywM" },
+      { id: 13, name: "Armbar", description: "Arm lock from closed guard", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=AV9NorNMWl4" },
+      { id: 14, name: "Triangle Choke", description: "Choke using legs", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=k54daRsX3co" },
+      { id: 15, name: "Scissor Sweep", description: "Sweep using legs", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=YxzKKqhZp44" },
+      { id: 16, name: "Hip Bump Sweep", description: "Sit-up sweep", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LjNN-LvPiXg" },
+      { id: 17, name: "Open Guard", description: "Open guard transition", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=-wftJg6jm3E" },
     ]
   },
   {
@@ -74,10 +75,10 @@ export const curriculumPositions: Position[] = [
     beltRequired: "blue",
     trainingType: "gi",
     techniques: [
-      { id: 18, name: "Spider Guard Sweep", description: "Sweep using spider control", type: "attack", beltRequired: "blue", trainingType: "gi" },
-      { id: 19, name: "Triangle from Spider", description: "Triangle using spider legs", type: "attack", beltRequired: "blue", trainingType: "gi" },
-      { id: 20, name: "Omoplata from Spider", description: "Shoulder lock from spider", type: "attack", beltRequired: "blue", trainingType: "gi" },
-      { id: 21, name: "Spider Guard Drill", description: "Maintain distance and control", type: "drill", beltRequired: "blue", trainingType: "gi" },
+      { id: 18, name: "Spider Guard Sweep", description: "Sweep using spider control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=oxeZThdCoW8" },
+      { id: 19, name: "Triangle from Spider", description: "Triangle using spider legs", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=lk9jgCdk0CY" },
+      { id: 20, name: "Omoplata from Spider", description: "Shoulder lock from spider", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=SY1EPTDS4O4" },
+      { id: 21, name: "Spider Guard Drill", description: "Maintain distance and control", type: "drill", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=8AuHvDeBwUM" },
     ]
   },
   {
@@ -87,11 +88,11 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "both",
     techniques: [
-      { id: 22, name: "Rear Naked Choke", description: "Basic back choke", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 23, name: "Collar Choke from Back", description: "Gi choke from back", type: "attack", beltRequired: "blue", trainingType: "gi" },
-      { id: 24, name: "Armbar from Back", description: "Arm lock from back control", type: "attack", beltRequired: "purple", trainingType: "both" },
-      { id: 25, name: "Back Escape - Peel Grip", description: "Escape by peeling hooks", type: "escape", beltRequired: "white", trainingType: "both" },
-      { id: 26, name: "Back Escape - Turn In", description: "Escape by turning into opponent", type: "escape", beltRequired: "blue", trainingType: "both" },
+      { id: 22, name: "Rear Naked Choke", description: "Basic back choke", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=KW2RvtWgBxU" },
+      { id: 23, name: "Collar Choke from Back", description: "Gi choke from back", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=HGclNS7b3S4" },
+      { id: 24, name: "Armbar from Back", description: "Arm lock from back control", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DbOnQ14Y2oU" },
+      { id: 25, name: "Back Escape - Peel Grip", description: "Escape by peeling hooks", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=JR2e0IsqhrQ" },
+      { id: 26, name: "Back Escape - Turn In", description: "Escape by turning into opponent", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=sGSI4sk-oxc" },
     ]
   },
   {
@@ -101,11 +102,11 @@ export const curriculumPositions: Position[] = [
     beltRequired: "blue",
     trainingType: "both",
     techniques: [
-      { id: 27, name: "Kimura from Half Guard", description: "Shoulder lock from bottom", type: "attack", beltRequired: "blue", trainingType: "both" },
-      { id: 28, name: "Sweep from Half Guard", description: "Basic sweep", type: "attack", beltRequired: "blue", trainingType: "both" },
-      { id: 29, name: "Deep Half Guard", description: "Underhook control", type: "transition", beltRequired: "purple", trainingType: "both" },
-      { id: 30, name: "Half Guard Pass - Tornado", description: "Pass using leg control", type: "attack", beltRequired: "purple", trainingType: "both" },
-      { id: 31, name: "Half Guard Escape - Knee Cut", description: "Pass half guard", type: "escape", beltRequired: "blue", trainingType: "both" },
+      { id: 27, name: "Kimura from Half Guard", description: "Shoulder lock from bottom", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ilEtQTHIV6E" },
+      { id: 28, name: "Sweep from Half Guard", description: "Basic sweep", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=Dpbwvhh0cZ8" },
+      { id: 29, name: "Deep Half Guard", description: "Underhook control", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=EUuZio59fvk" },
+      { id: 30, name: "Half Guard Pass - Tornado", description: "Pass using leg control", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=HVrhfCVpor4" },
+      { id: 31, name: "Half Guard Escape - Knee Cut", description: "Pass half guard", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=1guSnAAkPC0" },
     ]
   },
   {
@@ -115,12 +116,12 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "both",
     techniques: [
-      { id: 32, name: "Double Leg Takedown", description: "Basic wrestling takedown", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 33, name: "Single Leg Takedown", description: "Wrestling single leg", type: "attack", beltRequired: "white", trainingType: "both" },
-      { id: 34, name: "Osoto Gari", description: "Judo major outer reap", type: "attack", beltRequired: "blue", trainingType: "gi" },
-      { id: 35, name: "Seoi Nage", description: "Judo shoulder throw", type: "attack", beltRequired: "purple", trainingType: "gi" },
-      { id: 36, name: "Takedown Defense - Sprawl", description: "Defend takedowns", type: "escape", beltRequired: "white", trainingType: "both" },
-      { id: 37, name: "Takedown Defense - Whizzer", description: "Use underhook defense", type: "escape", beltRequired: "blue", trainingType: "both" },
+      { id: 32, name: "Double Leg Takedown", description: "Basic wrestling takedown", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=4DHzLvLd-0Y" },
+      { id: 33, name: "Single Leg Takedown", description: "Wrestling single leg", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
+      { id: 34, name: "Osoto Gari", description: "Judo major outer reap", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=XRklGgwpbj0" },
+      { id: 35, name: "Seoi Nage", description: "Judo shoulder throw", type: "attack", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=XRklGgwpbj0" },
+      { id: 36, name: "Takedown Defense - Sprawl", description: "Defend takedowns", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ihE2K-NY0rY" },
+      { id: 37, name: "Takedown Defense - Whizzer", description: "Use underhook defense", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ihE2K-NY0rY" },
     ]
   },
   {
@@ -130,10 +131,10 @@ export const curriculumPositions: Position[] = [
     beltRequired: "purple",
     trainingType: "both",
     techniques: [
-      { id: 38, name: "DLR Sweep", description: "Sweep using DLR hook", type: "attack", beltRequired: "purple", trainingType: "both" },
-      { id: 39, name: "Berimbolo", description: "Rolling attack to back", type: "attack", beltRequired: "brown", trainingType: "both" },
-      { id: 40, name: "DLR Pass", description: "Pass DLR guard", type: "attack", beltRequired: "purple", trainingType: "both" },
-      { id: 41, name: "DLR Drill", description: "Maintain DLR control", type: "drill", beltRequired: "purple", trainingType: "both" },
+      { id: 38, name: "DLR Sweep", description: "Sweep using DLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=vgDrPOgnQr4" },
+      { id: 39, name: "Berimbolo", description: "Rolling attack to back", type: "attack", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=fuQZmEoMui8" },
+      { id: 40, name: "DLR Pass", description: "Pass DLR guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=S5IKZijyNMc" },
+      { id: 41, name: "DLR Drill", description: "Maintain DLR control", type: "drill", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=vgDrPOgnQr4" },
     ]
   },
   {
@@ -143,9 +144,9 @@ export const curriculumPositions: Position[] = [
     beltRequired: "blue",
     trainingType: "both",
     techniques: [
-      { id: 42, name: "Knee on Belly Choke", description: "Choke from knee on belly", type: "attack", beltRequired: "blue", trainingType: "both" },
-      { id: 43, name: "Transition to Mount", description: "Move to mount", type: "transition", beltRequired: "blue", trainingType: "both" },
-      { id: 44, name: "Knee on Belly Escape", description: "Escape knee pressure", type: "escape", beltRequired: "blue", trainingType: "both" },
+      { id: 42, name: "Knee on Belly Choke", description: "Choke from knee on belly", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=25Phe--Jhu0" },
+      { id: 43, name: "Transition to Mount", description: "Move to mount", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=yOWgx8rVnzU" },
+      { id: 44, name: "Knee on Belly Escape", description: "Escape knee pressure", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=82QtizM8aD8" },
     ]
   },
   {
@@ -155,9 +156,9 @@ export const curriculumPositions: Position[] = [
     beltRequired: "purple",
     trainingType: "both",
     techniques: [
-      { id: 45, name: "Clock Choke", description: "Choke from turtle top", type: "attack", beltRequired: "purple", trainingType: "both" },
-      { id: 46, name: "Turtle Roll", description: "Roll out from turtle", type: "escape", beltRequired: "purple", trainingType: "both" },
-      { id: 47, name: "Back Take from Turtle", description: "Take back from turtle", type: "attack", beltRequired: "purple", trainingType: "both" },
+      { id: 45, name: "Clock Choke", description: "Choke from turtle top", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ihQnprnIHBs" },
+      { id: 46, name: "Turtle Roll", description: "Roll out from turtle", type: "escape", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=pmz1ID3VgGU" },
+      { id: 47, name: "Back Take from Turtle", description: "Take back from turtle", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=U7hvFYc7o_8" },
     ]
   },
   // No-Gi Positions
@@ -168,10 +169,10 @@ export const curriculumPositions: Position[] = [
     beltRequired: "blue",
     trainingType: "no-gi",
     techniques: [
-      { id: 48, name: "Butterfly Sweep", description: "Hook and sweep opponent", type: "attack", beltRequired: "blue", trainingType: "no-gi" },
-      { id: 49, name: "Armbar from Butterfly", description: "Arm lock using butterfly hooks", type: "attack", beltRequired: "blue", trainingType: "no-gi" },
-      { id: 50, name: "Butterfly to Back Take", description: "Transition to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 51, name: "Butterfly Guard Drill", description: "Maintain hooks and posture", type: "drill", beltRequired: "blue", trainingType: "no-gi" },
+      { id: 48, name: "Butterfly Sweep", description: "Hook and sweep opponent", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=H9IgqnhURCs" },
+      { id: 49, name: "Armbar from Butterfly", description: "Arm lock using butterfly hooks", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=69_vxa-x2gs" },
+      { id: 50, name: "Butterfly to Back Take", description: "Transition to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=PzJShoPzX-Y" },
+      { id: 51, name: "Butterfly Guard Drill", description: "Maintain hooks and posture", type: "drill", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=0WG1MYvgXAM" },
     ]
   },
   {
@@ -181,10 +182,10 @@ export const curriculumPositions: Position[] = [
     beltRequired: "purple",
     trainingType: "no-gi",
     techniques: [
-      { id: 52, name: "50/50 Knee Bar", description: "Leg lock from 50/50", type: "attack", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 53, name: "50/50 Toe Hold", description: "Foot lock variation", type: "attack", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 54, name: "50/50 Pass", description: "Pass 50/50 guard", type: "attack", beltRequired: "brown", trainingType: "no-gi" },
-      { id: 55, name: "50/50 Escape", description: "Stack and escape", type: "escape", beltRequired: "purple", trainingType: "no-gi" },
+      { id: 52, name: "50/50 Knee Bar", description: "Leg lock from 50/50", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=JP1e5zVnxxU" },
+      { id: 53, name: "50/50 Toe Hold", description: "Foot lock variation", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=JP1e5zVnxxU" },
+      { id: 54, name: "50/50 Pass", description: "Pass 50/50 guard", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=wMsYpNQyem8" },
+      { id: 55, name: "50/50 Escape", description: "Stack and escape", type: "escape", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=yUdB-EJaXgQ" },
     ]
   },
   {
@@ -194,12 +195,12 @@ export const curriculumPositions: Position[] = [
     beltRequired: "white",
     trainingType: "no-gi",
     techniques: [
-      { id: 56, name: "Double Leg Shot", description: "Penetration step takedown", type: "attack", beltRequired: "white", trainingType: "no-gi" },
-      { id: 57, name: "Single Leg High Crotch", description: "Wrestling single leg variation", type: "attack", beltRequired: "white", trainingType: "no-gi" },
-      { id: 58, name: "Ankle Pick", description: "Quick ankle pickup", type: "attack", beltRequired: "blue", trainingType: "no-gi" },
-      { id: 59, name: "Arm Drag to Back", description: "Arm drag and take back", type: "attack", beltRequired: "blue", trainingType: "no-gi" },
-      { id: 60, name: "Snap Down", description: "Snap head down to front headlock", type: "attack", beltRequired: "white", trainingType: "no-gi" },
-      { id: 61, name: "Takedown Defense - Downblock", description: "Defend shots with underhook", type: "escape", beltRequired: "white", trainingType: "no-gi" },
+      { id: 56, name: "Double Leg Shot", description: "Penetration step takedown", type: "attack", beltRequired: "white", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=4DHzLvLd-0Y" },
+      { id: 57, name: "Single Leg High Crotch", description: "Wrestling single leg variation", type: "attack", beltRequired: "white", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
+      { id: 58, name: "Ankle Pick", description: "Quick ankle pickup", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=KzEoF49h-Ic" },
+      { id: 59, name: "Arm Drag to Back", description: "Arm drag and take back", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DU7CS7jz_gY" },
+      { id: 60, name: "Snap Down", description: "Snap head down to front headlock", type: "attack", beltRequired: "white", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=z5ivorQAs9s" },
+      { id: 61, name: "Takedown Defense - Downblock", description: "Defend shots with underhook", type: "escape", beltRequired: "white", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=ihE2K-NY0rY" },
     ]
   },
   {
@@ -209,10 +210,10 @@ export const curriculumPositions: Position[] = [
     beltRequired: "purple",
     trainingType: "no-gi",
     techniques: [
-      { id: 62, name: "Rubber Guard Entry", description: "High guard with leg control", type: "transition", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 63, name: "Gogoplata", description: "Choke using shin", type: "attack", beltRequired: "brown", trainingType: "no-gi" },
-      { id: 64, name: "Rubber Guard Armbar", description: "Arm lock from rubber guard", type: "attack", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 65, name: "Rubber Guard Escape", description: "Stack and break grip", type: "escape", beltRequired: "brown", trainingType: "no-gi" },
+      { id: 62, name: "Rubber Guard Entry", description: "High guard with leg control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=1_BA6b13AsA" },
+      { id: 63, name: "Gogoplata", description: "Choke using shin", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=PQ5Rv4JmEF8" },
+      { id: 64, name: "Rubber Guard Armbar", description: "Arm lock from rubber guard", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=oiu3qn38EKs" },
+      { id: 65, name: "Rubber Guard Escape", description: "Stack and break grip", type: "escape", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=1_BA6b13AsA" },
     ]
   },
   {
@@ -222,11 +223,11 @@ export const curriculumPositions: Position[] = [
     beltRequired: "purple",
     trainingType: "no-gi",
     techniques: [
-      { id: 66, name: "Straight Ankle Lock", description: "Basic foot lock", type: "attack", beltRequired: "purple", trainingType: "no-gi" },
-      { id: 67, name: "Knee Bar", description: "Knee joint lock", type: "attack", beltRequired: "brown", trainingType: "no-gi" },
-      { id: 68, name: "Heel Hook", description: "Twisting leg lock", type: "attack", beltRequired: "black", trainingType: "no-gi" },
-      { id: 69, name: "Toe Hold", description: "Figure-four foot lock", type: "attack", beltRequired: "brown", trainingType: "no-gi" },
-      { id: 70, name: "Leg Lock Defense", description: "Defend against leg attacks", type: "escape", beltRequired: "purple", trainingType: "no-gi" },
+      { id: 66, name: "Straight Ankle Lock", description: "Basic foot lock", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+      { id: 67, name: "Knee Bar", description: "Knee joint lock", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=wMsYpNQyem8" },
+      { id: 68, name: "Heel Hook", description: "Twisting leg lock", type: "attack", beltRequired: "black", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=hNTsYUShvLU" },
+      { id: 69, name: "Toe Hold", description: "Figure-four foot lock", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=JP1e5zVnxxU" },
+      { id: 70, name: "Leg Lock Defense", description: "Defend against leg attacks", type: "escape", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=yUdB-EJaXgQ" },
     ]
   },
 ];
@@ -235,24 +236,24 @@ export const curriculumPositions: Position[] = [
 // Prioritizes white belt positions while ensuring variety
 export function generate52WeekSchedule(beltLevel: 'white' | 'blue' | 'purple' | 'brown' | 'black' | 'all' = 'all'): Record<number, number> {
   const schedule: Record<number, number> = {};
-  
+
   // Filter positions based on belt level
   let availablePositions = curriculumPositions.filter(p => p.trainingType !== 'no-gi');
   if (beltLevel !== 'all') {
     const beltOrder = ['white', 'blue', 'purple', 'brown', 'black'];
     const maxBeltIndex = beltOrder.indexOf(beltLevel);
-    availablePositions = availablePositions.filter(p => 
+    availablePositions = availablePositions.filter(p =>
       beltOrder.indexOf(p.beltRequired) <= maxBeltIndex
     );
   }
-  
+
   const whiteBeltPositions = availablePositions.filter(p => p.beltRequired === 'white');
   const higherBeltPositions = availablePositions.filter(p => p.beltRequired !== 'white');
-  
+
   // Ensure white belt positions appear every 2 weeks, higher belt positions fill gaps
   let whiteIndex = 0;
   let higherIndex = 0;
-  
+
   for (let week = 1; week <= 52; week++) {
     // Every other week (or when we run out of higher belt positions), show white belt content
     if (week % 2 === 1 || higherIndex >= higherBeltPositions.length) {
@@ -273,7 +274,7 @@ export function generate52WeekSchedule(beltLevel: 'white' | 'blue' | 'purple' | 
       }
     }
   }
-  
+
   return schedule;
 }
 

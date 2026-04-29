@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 
 interface AuthModalProps {
@@ -9,16 +9,34 @@ interface AuthModalProps {
   redirectTo?: string;
 }
 
+const COOLDOWN_SECONDS = 60;
+
+function friendlyError(msg: string): string {
+  const lower = msg.toLowerCase();
+  if (lower.includes('rate limit') || lower.includes('too many') || lower.includes('for security purposes')) {
+    return `Too many sign-in attempts. Please wait a minute before trying again.`;
+  }
+  if (lower.includes('invalid email')) return 'Please enter a valid email address.';
+  return msg;
+}
+
 export default function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'sent' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [cooldown, setCooldown] = useState(0);
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setTimeout(() => setCooldown(c => c - 1), 1000);
+    return () => clearTimeout(t);
+  }, [cooldown]);
 
   if (!isOpen) return null;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!supabase) return;
+    if (!supabase || cooldown > 0) return;
     setStatus('loading');
 
     const { error } = await supabase.auth.signInWithOtp({
@@ -28,9 +46,15 @@ export default function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProp
 
     if (error) {
       setStatus('error');
-      setErrorMsg(error.message);
+      setErrorMsg(friendlyError(error.message));
+      if (error.message.toLowerCase().includes('rate limit') ||
+          error.message.toLowerCase().includes('too many') ||
+          error.message.toLowerCase().includes('for security purposes')) {
+        setCooldown(COOLDOWN_SECONDS);
+      }
     } else {
       setStatus('sent');
+      setCooldown(COOLDOWN_SECONDS);
     }
   }
 
@@ -51,10 +75,24 @@ export default function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProp
           <div className="text-center py-4">
             <div className="text-5xl mb-4">📧</div>
             <h2 className="text-xl font-bold mb-2">Check your email</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-2">
               We sent a sign-in link to <strong>{email}</strong>
             </p>
-            <button onClick={handleClose} className="btn-secondary w-full">Close</button>
+            <p className="text-gray-400 text-sm mb-6">Check your spam folder if it doesn't arrive within a minute.</p>
+            {cooldown > 0 && (
+              <p className="text-gray-400 text-xs mb-4">Resend available in {cooldown}s</p>
+            )}
+            <div className="flex gap-2">
+              {cooldown === 0 && (
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="btn-secondary flex-1"
+                >
+                  Resend
+                </button>
+              )}
+              <button onClick={handleClose} className="btn-secondary flex-1">Close</button>
+            </div>
           </div>
         ) : (
           <>
@@ -85,10 +123,14 @@ export default function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProp
               )}
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={status === 'loading' || cooldown > 0}
                 className="btn-primary w-full py-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === 'loading' ? 'Sending…' : 'Send magic link'}
+                {status === 'loading'
+                  ? 'Sending…'
+                  : cooldown > 0
+                  ? `Retry in ${cooldown}s`
+                  : 'Send magic link'}
               </button>
             </form>
           </>
