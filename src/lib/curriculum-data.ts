@@ -432,11 +432,10 @@ export const curriculumPositions: Position[] = [
      category: "top_positions",
      beltRequired: "white",
      trainingType: "both",
-     techniques: [
-       { id: 141, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
-       { id: 142, name: "Rear Armbar", description: "Arm lock from back control position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
-       { id: 143, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
-     ]
+      techniques: [
+        { id: 141, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+        { id: 143, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+      ]
    },
 ];
 
