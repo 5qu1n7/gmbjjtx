@@ -31,6 +31,7 @@ const ALL_TECHNIQUES = curriculumPositions.flatMap(p => p.techniques);
 export default function Home() {
   const [currentWeek, setCurrentWeek] = useState(getCurrentWeek());
   const [position, setPosition] = useState<Position | undefined>();
+  const [pinnedPosition, setPinnedPosition] = useState<Position | null>(null);
   const [user, setUser] = useState<any>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [trainingFilter, setTrainingFilter] = useState<TrainingType | 'all'>('all');
@@ -127,18 +128,20 @@ export default function Home() {
     setCompletedIds(new Set());
   }
 
-  function nextWeek() { setCurrentWeek(w => (w % 52) + 1); }
-  function prevWeek() { setCurrentWeek(w => w === 1 ? 52 : w - 1); }
+  function nextWeek() { setPinnedPosition(null); setCurrentWeek(w => (w % 52) + 1); }
+  function prevWeek() { setPinnedPosition(null); setCurrentWeek(w => w === 1 ? 52 : w - 1); }
 
   const filteredPositions = curriculumPositions.filter(pos =>
     (trainingFilter === 'all' || pos.trainingType === trainingFilter || pos.trainingType === 'both') &&
     (beltFilter === 'all' || pos.beltRequired === beltFilter)
   );
 
-  const displayTechniques = position?.techniques.filter(tech =>
+  const activePosition = pinnedPosition ?? position;
+
+  const displayTechniques = activePosition?.techniques.filter(tech =>
     (trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both') &&
     (beltFilter === 'all' || tech.beltRequired === beltFilter)
-  ) ?? position?.techniques ?? [];
+  ) ?? activePosition?.techniques ?? [];
 
   const completedCount = [...completedIds].filter(id => ALL_TECHNIQUES.some(t => t.id === id)).length;
 
@@ -243,25 +246,25 @@ export default function Home() {
         </div>
 
         {/* Current week position */}
-        {position && (
+        {activePosition && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
             <div className="flex items-center gap-2 flex-wrap mb-3">
               <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
-                {position.category.replace(/_/g, ' ')}
+                {activePosition.category.replace(/_/g, ' ')}
               </span>
-              <span className={`text-xs font-semibold px-3 py-1 rounded-full ${beltBadgeClass(position.beltRequired)}`}>
-                {position.beltRequired}+
+              <span className={`text-xs font-semibold px-3 py-1 rounded-full ${beltBadgeClass(activePosition.beltRequired)}`}>
+                {activePosition.beltRequired}+
               </span>
               <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                position.trainingType === 'gi'    ? 'bg-blue-100 text-blue-800' :
-                position.trainingType === 'no-gi' ? 'bg-purple-100 text-purple-800' :
+                activePosition.trainingType === 'gi'    ? 'bg-blue-100 text-blue-800' :
+                activePosition.trainingType === 'no-gi' ? 'bg-purple-100 text-purple-800' :
                 'bg-green-100 text-green-800'
               }`}>
-                {position.trainingType.toUpperCase()}
+                {activePosition.trainingType.toUpperCase()}
               </span>
             </div>
 
-            <h3 className="text-2xl font-bold mb-5">{position.name}</h3>
+            <h3 className="text-2xl font-bold mb-5">{activePosition.name}</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {displayTechniques.map(tech => {
@@ -328,8 +331,10 @@ export default function Home() {
             {filteredPositions.map(pos => (
               <button
                 key={pos.id}
-                onClick={() => setCurrentWeek(((pos.id - 1) % 52) + 1)}
-                className="text-left border border-gray-200 rounded-xl p-4 hover:border-blue-400 hover:bg-blue-50 transition"
+                onClick={() => { setPinnedPosition(pos); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className={`text-left border rounded-xl p-4 hover:border-blue-400 hover:bg-blue-50 transition ${
+                  activePosition?.id === pos.id ? 'border-blue-400 bg-blue-50' : 'border-gray-200'
+                }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-semibold">{pos.name}</span>
