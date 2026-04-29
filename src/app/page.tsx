@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
-import { getCurrentWeek, getPositionForWeek, getWeekDateRange, curriculumPositions } from '@/lib/curriculum-data';
+import { getCurrentWeek, getPositionForWeek, getWeekDateRange, getTechniquesForWeek, curriculumPositions } from '@/lib/curriculum-data';
 import type { Position, TrainingType } from '@/lib/curriculum-data';
 import AuthModal from '@/components/AuthModal';
 
@@ -129,10 +129,21 @@ export default function Home() {
     ? (curriculumPositions.find(p => p.id === selectedPositionId) ?? weekPosition)
     : weekPosition;
 
-  const displayTechniques = activePosition?.techniques.filter(tech =>
+  // Get weekly techniques if showing current week, otherwise show all (when position is pinned)
+  let weeklyTechniques = activePosition 
+    ? getTechniquesForWeek(activePosition, currentWeek, beltFilter)
+    : [];
+
+  // If a specific position is selected (pinned), show all techniques for that position
+  const displayTechniques = selectedPositionId 
+    ? (activePosition?.techniques ?? [])
+    : weeklyTechniques;
+
+  // Apply training filter
+  const filteredTechniques = displayTechniques.filter(tech =>
     (trainingFilter === 'all' || tech.trainingType === trainingFilter || tech.trainingType === 'both') &&
     (beltFilter === 'all' || tech.beltRequired === beltFilter)
-  ) ?? activePosition?.techniques ?? [];
+  );
 
   const completedCount = [...completedIds].filter(id => ALL_TECHNIQUES.some(t => t.id === id)).length;
 
@@ -243,7 +254,7 @@ export default function Home() {
             <h3 className="text-2xl font-bold mb-5">{activePosition.name}</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {displayTechniques.map(tech => {
+              {filteredTechniques.map(tech => {
                 const drilled = completedIds.has(tech.id);
                 return (
                   <div

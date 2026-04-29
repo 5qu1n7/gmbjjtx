@@ -40,6 +40,8 @@ export const curriculumPositions: Position[] = [
       { id: 71, name: "Arm Triangle from Mount", description: "Head and arm choke from top", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=fqYw8uqkBgQ" },
       { id: 72, name: "Bow and Arrow Choke", description: "Gi collar choke with leg hook", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=yrUXIujVGTM" },
       { id: 73, name: "Triangle from Mount", description: "Set up triangle from top position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=EOzOsv4jc80" },
+      { id: 99, name: "Kipping Escape", description: "Explosive hip escape from bottom mount", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=MswSPZCqvCo" },
+      { id: 100, name: "S-Mount Escape", description: "Defend and escape S-mount armbar setup", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=E2cT25uVi28" },
     ]
   },
   {
@@ -57,6 +59,10 @@ export const curriculumPositions: Position[] = [
       { id: 74, name: "Arm Triangle from Side Control", description: "Head and arm choke from side", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=EXM0CP1YvCY" },
       { id: 75, name: "Paper Cutter Choke", description: "Cross-collar choke from side control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=b1BRayJPrEk" },
       { id: 76, name: "Armbar from Side Control", description: "Far-side armbar", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=qouu5qFtZZA" },
+      { id: 101, name: "Buggy Choke", description: "Leg-assisted choke from bottom side control", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=0VDUwuyT6N4" },
+      { id: 102, name: "Ghost Escape", description: "Roll under and recover guard", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=1ODL69z-DdQ" },
+      { id: 103, name: "Baseball Bat Choke", description: "Gi cross-collar choke from top side control", type: "attack", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=lLJIZHax4GE" },
+      { id: 104, name: "Kesa Gatame Escape", description: "Hip escape and guard recovery from scarf hold", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
     ]
   },
   {
@@ -103,6 +109,9 @@ export const curriculumPositions: Position[] = [
       { id: 25, name: "Back Escape - Peel Grip", description: "Escape by peeling hooks", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
       { id: 26, name: "Back Escape - Turn In", description: "Escape by turning into opponent", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
       { id: 80, name: "Bow and Arrow Choke from Back", description: "Gi collar choke with leg control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=xqNhZVNhxnE" },
+      { id: 105, name: "Crucifix Choke", description: "Choke using opponent's trapped arm and leg", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=NBP8iFp3ypM" },
+      { id: 106, name: "Rear Triangle (Ura Sankaku)", description: "Triangle choke from back control", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=96GTzr5AzKw" },
+      { id: 107, name: "Body Triangle Escape", description: "Escape from rear body triangle lock", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=RA8Qc6hE23s" },
     ]
   },
   {
@@ -285,6 +294,63 @@ export const curriculumPositions: Position[] = [
       { id: 98, name: "X-Guard Back Take", description: "Transition to back from X-guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=PfvLyeVBa4o" },
     ]
   },
+  {
+    id: 19,
+    name: "North-South",
+    category: "top_positions",
+    beltRequired: "blue",
+    trainingType: "both",
+    techniques: [
+      { id: 108, name: "North-South Kimura", description: "Shoulder lock from north-south position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=nPie9yUU4LM" },
+      { id: 109, name: "North-South Back Take", description: "Transition to back control from north-south", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=SAKV7M_yDUs" },
+    ]
+  },
+  {
+    id: 20,
+    name: "Lasso Guard",
+    category: "guard",
+    beltRequired: "blue",
+    trainingType: "gi",
+    techniques: [
+      { id: 110, name: "Lasso Sweep", description: "Sweep using lasso sleeve and collar control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=avrcVQ2mQIw" },
+      { id: 111, name: "Triangle from Lasso", description: "Triangle choke using lasso leg control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DyQD86cvS7k" },
+      { id: 112, name: "Loop Choke", description: "Collar choke using opponent's own lapel", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=PFqYQ7gF7VQ" },
+    ]
+  },
+  {
+    id: 21,
+    name: "Reverse De La Riva",
+    category: "guard",
+    beltRequired: "purple",
+    trainingType: "both",
+    techniques: [
+      { id: 113, name: "RDLR Sweep", description: "Dump and sweep from reverse De La Riva", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=a0UF6674jI0" },
+      { id: 114, name: "RDLR Back Take", description: "Take back using RDLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=9UWgyOO8Sjg" },
+    ]
+  },
+  {
+    id: 22,
+    name: "Z Guard / Knee Shield",
+    category: "guard",
+    beltRequired: "blue",
+    trainingType: "both",
+    techniques: [
+      { id: 115, name: "Z Guard Sweep", description: "Sweep using knee shield and hip control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
+      { id: 116, name: "Z Guard Back Take", description: "Transition to back from knee shield position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
+    ]
+  },
+  {
+    id: 23,
+    name: "Guard Headquarters (HQ)",
+    category: "top_positions",
+    beltRequired: "blue",
+    trainingType: "both",
+    techniques: [
+      { id: 117, name: "Knee Cut Pass from HQ", description: "Knee slice pass from headquarters position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=peqZ1a2_sfE" },
+      { id: 118, name: "Backstep Pass from HQ", description: "Backstep around the legs to complete the pass", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VMkAZCbUN18" },
+      { id: 119, name: "Crab Ride", description: "Back harness control transition from top position", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+    ]
+  },
 ];
 
 // 52-week rotating schedule - maps week numbers to position IDs
@@ -355,4 +421,52 @@ export function getWeekDateRange(week: number): string {
   const endMs = startMs + 6 * 24 * 60 * 60 * 1000;
   const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   return `${fmt(new Date(startMs))} – ${fmt(new Date(endMs))}`;
+}
+
+/**
+ * Get techniques for a specific position in a given week.
+ * When a position appears multiple times in the 52-week schedule, different
+ * techniques are shown each time to ensure all techniques are eventually covered.
+ * 
+ * @param position - The position object
+ * @param week - The week number (1-52)
+ * @param beltLevel - Filter by belt level
+ * @returns Array of techniques to show for this position in this week
+ */
+export function getTechniquesForWeek(
+  position: Position,
+  week: number,
+  beltLevel: 'white' | 'blue' | 'purple' | 'brown' | 'black' | 'all' = 'all'
+): Technique[] {
+  const schedule = generate52WeekSchedule(beltLevel);
+  const adjustedWeek = ((week - 1) % 52) + 1;
+  
+  // Find all weeks where this position appears in the schedule
+  const weeksWithPosition = Object.entries(schedule)
+    .filter(([_, posId]) => posId === position.id)
+    .map(([w]) => parseInt(w))
+    .sort((a, b) => a - b);
+
+  if (weeksWithPosition.length === 0) {
+    // Position not in schedule for this belt level, return first 3 techniques
+    return position.techniques.slice(0, 3);
+  }
+
+  // Find the index of current week in the sequence of this position's appearances
+  const currentIndex = weeksWithPosition.indexOf(adjustedWeek);
+  const occurrenceNumber = currentIndex >= 0 ? currentIndex : 0;
+
+  // Determine how many techniques to show per week (aim for 2-3)
+  const techniquesPerWeek = Math.min(3, Math.max(2, Math.ceil(position.techniques.length / Math.max(weeksWithPosition.length, 1))));
+
+  // Calculate which techniques to show for this occurrence
+  const startIdx = (occurrenceNumber * techniquesPerWeek) % position.techniques.length;
+  const techniques: Technique[] = [];
+
+  for (let i = 0; i < techniquesPerWeek; i++) {
+    const idx = (startIdx + i) % position.techniques.length;
+    techniques.push(position.techniques[idx]);
+  }
+
+  return techniques;
 }
