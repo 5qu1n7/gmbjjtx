@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
-import { getCurrentWeek, getPositionForWeek, curriculumPositions } from '@/lib/curriculum-data';
+import { getCurrentWeek, getPositionForWeek, getWeekDateRange, curriculumPositions } from '@/lib/curriculum-data';
 import type { Position, TrainingType } from '@/lib/curriculum-data';
 import AuthModal from '@/components/AuthModal';
 
@@ -198,8 +198,8 @@ export default function Home() {
           <div className="flex items-center justify-between bg-white/85 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-gray-100">
             <button onClick={prevWeek} className="btn-secondary text-sm">← Prev</button>
             <div className="text-center">
-              <span className="text-2xl font-bold">Week {currentWeek}</span>
-              <span className="text-gray-400 text-sm ml-2">/ 52</span>
+              <div className="text-2xl font-bold">Week {currentWeek} <span className="text-gray-400 text-lg font-normal">/ 52</span></div>
+              <div className="text-gray-400 text-sm mt-0.5">{getWeekDateRange(currentWeek)}</div>
             </div>
             <button onClick={nextWeek} className="btn-secondary text-sm">Next →</button>
           </div>

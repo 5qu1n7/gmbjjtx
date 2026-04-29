@@ -292,3 +292,12 @@ export function getCurrentWeek(): number {
   const oneWeek = 1000 * 60 * 60 * 24 * 7;
   return Math.ceil(diff / oneWeek);
 }
+
+export function getWeekDateRange(week: number): string {
+  const year = new Date().getFullYear();
+  const jan1 = new Date(year, 0, 1);
+  const startMs = jan1.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000;
+  const endMs = startMs + 6 * 24 * 60 * 60 * 1000;
+  const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return `${fmt(new Date(startMs))} – ${fmt(new Date(endMs))}`;
+}
