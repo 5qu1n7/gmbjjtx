@@ -52,6 +52,7 @@ export default function Navigation() {
             <div className="flex gap-4 text-sm">
               <a href="/" className="text-gray-600 hover:text-gray-900 transition">Calendar</a>
               <a href="/notes" className="text-gray-600 hover:text-gray-900 transition">My Notes</a>
+              <a href="/milestones" className="text-gray-600 hover:text-gray-900 transition">Milestones</a>
               {(role === 'admin' || role === 'coach') && (
                 <a href="/admin" className="text-blue-600 hover:text-blue-800 font-medium transition">Admin</a>
               )}
