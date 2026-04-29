@@ -40,7 +40,6 @@ export default function Home() {
 
   useEffect(() => {
     checkUser();
-    loadCompletions();
   }, []);
 
   useEffect(() => {
@@ -48,32 +47,84 @@ export default function Home() {
   }, [currentWeek, beltFilter]);
 
   async function checkUser() {
-    if (!supabase) { setAuthChecked(true); return; }
+    if (!supabase) { setAuthChecked(true); loadFromLocalStorage(); return; }
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
     setAuthChecked(true);
+    if (user) {
+      await loadAndMigrateCompletions(user.id);
+    } else {
+      loadFromLocalStorage();
+    }
   }
 
-  function loadCompletions() {
+  function loadFromLocalStorage() {
     try {
       const raw = localStorage.getItem('bjj_completions');
       if (raw) setCompletedIds(new Set(JSON.parse(raw)));
     } catch {}
   }
 
-  function toggleCompletion(techId: number) {
+  async function loadAndMigrateCompletions(userId: string) {
+    if (!supabase) return;
+
+    // Migrate any existing localStorage completions up to Supabase on first login
+    try {
+      const raw = localStorage.getItem('bjj_completions');
+      if (raw) {
+        const localIds: number[] = JSON.parse(raw);
+        if (localIds.length > 0) {
+          await supabase.from('technique_completions').upsert(
+            localIds.map(id => ({ user_id: userId, technique_id: id }))
+          );
+        }
+        localStorage.removeItem('bjj_completions');
+      }
+    } catch {}
+
+    // Load from Supabase
+    const { data } = await supabase
+      .from('technique_completions')
+      .select('technique_id')
+      .eq('user_id', userId);
+
+    if (data) setCompletedIds(new Set(data.map((r: { technique_id: number }) => r.technique_id)));
+  }
+
+  async function toggleCompletion(techId: number) {
+    const wasDrilled = completedIds.has(techId);
+
+    // Optimistic UI update
     setCompletedIds(prev => {
       const next = new Set(prev);
       if (next.has(techId)) next.delete(techId); else next.add(techId);
-      try { localStorage.setItem('bjj_completions', JSON.stringify([...next])); } catch {}
       return next;
     });
+
+    if (user && supabase) {
+      if (wasDrilled) {
+        await supabase.from('technique_completions')
+          .delete()
+          .eq('user_id', user.id)
+          .eq('technique_id', techId);
+      } else {
+        await supabase.from('technique_completions')
+          .upsert({ user_id: user.id, technique_id: techId });
+      }
+    } else {
+      // Not logged in — persist to localStorage
+      setCompletedIds(prev => {
+        try { localStorage.setItem('bjj_completions', JSON.stringify([...prev])); } catch {}
+        return prev;
+      });
+    }
   }
 
   async function handleSignOut() {
     if (!supabase) return;
     await supabase.auth.signOut();
     setUser(null);
+    setCompletedIds(new Set());
   }
 
   function nextWeek() { setCurrentWeek(w => (w % 52) + 1); }

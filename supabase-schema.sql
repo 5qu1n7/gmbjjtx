@@ -92,8 +92,23 @@ CREATE POLICY "Coaches can view all notes" ON session_notes FOR SELECT USING (
 CREATE POLICY "Anyone can view techniques" ON techniques FOR SELECT USING (true);
 CREATE POLICY "Anyone can view positions" ON positions FOR SELECT USING (true);
 
+-- Technique completions (per-user drill tracking)
+CREATE TABLE technique_completions (
+  id SERIAL PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  technique_id INTEGER NOT NULL,
+  completed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(user_id, technique_id)
+);
+
+ALTER TABLE technique_completions ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can manage own completions" ON technique_completions
+  FOR ALL USING (auth.uid() = user_id);
+
 -- Indexes
 CREATE INDEX idx_calendar_events_week ON calendar_events(week_number);
 CREATE INDEX idx_session_notes_user ON session_notes(user_id);
 CREATE INDEX idx_session_notes_week ON session_notes(week_number);
 CREATE INDEX idx_techniques_position ON techniques(position_id);
+CREATE INDEX idx_completions_user ON technique_completions(user_id);
