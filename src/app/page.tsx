@@ -164,19 +164,11 @@ export default function Home() {
 
       <main className="max-w-6xl mx-auto p-6 md:p-8">
 
-        {/* Header row */}
-        <div className="flex justify-between items-start mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              {authChecked && user ? 'BJJ Curriculum' : 'Browse Curriculum'}
-            </h2>
-            {authChecked && user && completedCount > 0 && (
-              <p className="text-sm text-gray-500 mt-1">
-                {completedCount} of {ALL_TECHNIQUES.length} techniques drilled
-              </p>
-            )}
-          </div>
-        </div>
+        {authChecked && user && completedCount > 0 && (
+          <p className="text-sm text-gray-500 mb-4">
+            {completedCount} of {ALL_TECHNIQUES.length} techniques drilled
+          </p>
+        )}
 
         {/* Controls */}
         <div className="flex flex-col gap-3 mb-8">
