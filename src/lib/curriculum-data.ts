@@ -83,19 +83,21 @@ export const curriculumPositions: Position[] = [
       { id: 79, name: "Guillotine from Guard", description: "Pull guard and finish guillotine", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=UbcqJETDUY8" },
     ]
   },
-  {
-    id: 4,
-    name: "Open Guard - Spider",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "gi",
-    techniques: [
-      { id: 18, name: "Spider Guard Sweep", description: "Sweep using spider control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
-      { id: 19, name: "Triangle from Spider", description: "Triangle using spider legs", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
-      { id: 20, name: "Omoplata from Spider", description: "Shoulder lock from spider", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
-      { id: 21, name: "Spider Guard Drill", description: "Maintain distance and control", type: "drill", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-    ]
-  },
+   {
+     id: 4,
+     name: "Open Guard - Spider",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "gi",
+     techniques: [
+       { id: 18, name: "Spider Guard Sweep", description: "Sweep using spider control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 19, name: "Triangle from Spider", description: "Triangle using spider legs", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+       { id: 20, name: "Omoplata from Spider", description: "Shoulder lock from spider", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+       { id: 21, name: "Spider Guard Drill", description: "Maintain distance and control", type: "drill", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 159, name: "Spider Armbar", description: "Arm lock setup from spider guard", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 160, name: "Spider Guard Lasso Transition", description: "Move into lasso guard from spider", type: "transition", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+     ]
+   },
   {
     id: 5,
     name: "Back Mount",
@@ -130,87 +132,101 @@ export const curriculumPositions: Position[] = [
       { id: 82, name: "Electric Chair Sweep", description: "Groin stretch sweep from lockdown", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=3f2Qkpb98WI" },
     ]
   },
-  {
-    id: 7,
-    name: "Takedowns",
-    category: "takedowns",
-    beltRequired: "white",
-    trainingType: "both",
-    techniques: [
-      { id: 32, name: "Double Leg Takedown", description: "Basic wrestling takedown", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
-      { id: 33, name: "Single Leg Takedown", description: "Wrestling single leg", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
-      { id: 34, name: "Osoto Gari", description: "Judo major outer reap", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=5M1wkbaOYUM" },
-      { id: 35, name: "Seoi Nage", description: "Judo shoulder throw", type: "attack", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=5M1wkbaOYUM" },
-      { id: 36, name: "Takedown Defense - Sprawl", description: "Defend takedowns", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
-      { id: 37, name: "Takedown Defense - Whizzer", description: "Use underhook defense", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
-    ]
-  },
-  {
-    id: 8,
-    name: "Open Guard - De La Riva",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "both",
-    techniques: [
-      { id: 38, name: "DLR Sweep", description: "Sweep using DLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
-      { id: 39, name: "Berimbolo", description: "Rolling attack to back", type: "attack", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
-      { id: 40, name: "DLR Pass", description: "Pass DLR guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=F0Qz-DcqxJw" },
-      { id: 41, name: "DLR Drill", description: "Maintain DLR control", type: "drill", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
-    ]
-  },
-  {
-    id: 9,
-    name: "Knee on Belly",
-    category: "top_positions",
-    beltRequired: "blue",
-    trainingType: "both",
-    techniques: [
-      { id: 42, name: "Knee on Belly Choke", description: "Choke from knee on belly", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
-      { id: 43, name: "Transition to Mount", description: "Move to mount", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
-      { id: 44, name: "Knee on Belly Escape", description: "Escape knee pressure", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
-    ]
-  },
-  {
-    id: 10,
-    name: "Turtle Guard",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "both",
-    techniques: [
-      { id: 45, name: "Clock Choke", description: "Choke from turtle top", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
-      { id: 46, name: "Turtle Roll", description: "Roll out from turtle", type: "escape", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
-      { id: 47, name: "Back Take from Turtle", description: "Take back from turtle", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
-      { id: 83, name: "D'arce Choke from Turtle", description: "Arm-around choke from top of turtle", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VOliFfkp5Ik" },
-      { id: 84, name: "Anaconda Choke from Turtle", description: "Rolling arm-around choke", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=8Qg5BH0sXKY" },
-    ]
-  },
+   {
+     id: 7,
+     name: "Takedowns",
+     category: "takedowns",
+     beltRequired: "white",
+     trainingType: "both",
+     techniques: [
+       { id: 32, name: "Double Leg Takedown", description: "Basic wrestling takedown", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
+       { id: 33, name: "Single Leg Takedown", description: "Wrestling single leg", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
+       { id: 34, name: "Osoto Gari", description: "Judo major outer reap", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=5M1wkbaOYUM" },
+       { id: 35, name: "Seoi Nage", description: "Judo shoulder throw", type: "attack", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=5M1wkbaOYUM" },
+       { id: 36, name: "Takedown Defense - Sprawl", description: "Defend takedowns", type: "escape", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
+       { id: 37, name: "Takedown Defense - Whizzer", description: "Use underhook defense", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
+       { id: 190, name: "High Crotch Takedown", description: "Wrestling high crotch position takedown", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=rwq5g9RvPz8" },
+       { id: 191, name: "Foot Sweep Takedown", description: "Judo-style foot sweep from collar tie", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=5M1wkbaOYUM" },
+     ]
+   },
+   {
+     id: 8,
+     name: "Open Guard - De La Riva",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "both",
+     techniques: [
+       { id: 38, name: "DLR Sweep", description: "Sweep using DLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 39, name: "Berimbolo", description: "Rolling attack to back", type: "attack", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+       { id: 40, name: "DLR Pass", description: "Pass DLR guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=F0Qz-DcqxJw" },
+       { id: 41, name: "DLR Drill", description: "Maintain DLR control", type: "drill", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 187, name: "DLR Triangle", description: "Triangle choke setup from DLR position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 188, name: "DLR Leglock Entry", description: "Transition to leg lock positions from DLR", type: "transition", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 189, name: "DLR Back Take", description: "Take the back from De La Riva guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+     ]
+   },
+   {
+     id: 9,
+     name: "Knee on Belly",
+     category: "top_positions",
+     beltRequired: "blue",
+     trainingType: "both",
+     techniques: [
+       { id: 42, name: "Knee on Belly Choke", description: "Choke from knee on belly", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+       { id: 43, name: "Transition to Mount", description: "Move to mount", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+       { id: 44, name: "Knee on Belly Escape", description: "Escape knee pressure", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+       { id: 161, name: "Knee on Belly Armbar", description: "Arm lock from knee on belly", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 162, name: "Knee on Belly Darce", description: "D'arce choke setup from knee on belly", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VOliFfkp5Ik" },
+       { id: 163, name: "Transition to Side Control", description: "Move from knee on belly to side control", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+     ]
+   },
+   {
+     id: 10,
+     name: "Turtle Guard",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "both",
+     techniques: [
+       { id: 45, name: "Clock Choke", description: "Choke from turtle top", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+       { id: 46, name: "Turtle Roll", description: "Roll out from turtle", type: "escape", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+       { id: 47, name: "Back Take from Turtle", description: "Take back from turtle", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+       { id: 83, name: "D'arce Choke from Turtle", description: "Arm-around choke from top of turtle", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VOliFfkp5Ik" },
+       { id: 84, name: "Anaconda Choke from Turtle", description: "Rolling arm-around choke", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=8Qg5BH0sXKY" },
+       { id: 164, name: "Turtle Guard Armbar", description: "Arm lock setup from turtle position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 165, name: "Turtle Roll to Guard Recovery", description: "Escape and recover guard position", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+     ]
+   },
   // No-Gi Positions
-  {
-    id: 11,
-    name: "Butterfly Guard",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "no-gi",
-    techniques: [
-      { id: 48, name: "Butterfly Sweep", description: "Hook and sweep opponent", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-      { id: 49, name: "Armbar from Butterfly", description: "Arm lock using butterfly hooks", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
-      { id: 50, name: "Butterfly to Back Take", description: "Transition to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
-      { id: 51, name: "Butterfly Guard Drill", description: "Maintain hooks and posture", type: "drill", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-    ]
-  },
-  {
-    id: 12,
-    name: "50/50 Guard",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "no-gi",
-    techniques: [
-      { id: 52, name: "50/50 Knee Bar", description: "Leg lock from 50/50", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
-      { id: 53, name: "50/50 Toe Hold", description: "Foot lock variation", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
-      { id: 54, name: "50/50 Pass", description: "Pass 50/50 guard", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=F0Qz-DcqxJw" },
-      { id: 55, name: "50/50 Escape", description: "Stack and escape", type: "escape", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-    ]
-  },
+   {
+     id: 11,
+     name: "Butterfly Guard",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "no-gi",
+     techniques: [
+       { id: 48, name: "Butterfly Sweep", description: "Hook and sweep opponent", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 49, name: "Armbar from Butterfly", description: "Arm lock using butterfly hooks", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 50, name: "Butterfly to Back Take", description: "Transition to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+       { id: 51, name: "Butterfly Guard Drill", description: "Maintain hooks and posture", type: "drill", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 192, name: "Butterfly Triangle", description: "Triangle choke setup from butterfly hooks", type: "attack", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 193, name: "Butterfly Hooks Mount Escape", description: "Use butterfly hooks to escape mount pressure", type: "escape", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+     ]
+   },
+   {
+     id: 12,
+     name: "50/50 Guard",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "no-gi",
+     techniques: [
+       { id: 52, name: "50/50 Knee Bar", description: "Leg lock from 50/50", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 53, name: "50/50 Toe Hold", description: "Foot lock variation", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 54, name: "50/50 Pass", description: "Pass 50/50 guard", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=F0Qz-DcqxJw" },
+       { id: 55, name: "50/50 Escape", description: "Stack and escape", type: "escape", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 194, name: "50/50 Heel Hook", description: "Advanced heel hook setup from 50/50", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=hNTsYUShvLU" },
+       { id: 195, name: "50/50 Sweep to Leglock", description: "Sweep and transition into leg lock position", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+     ]
+   },
   {
     id: 13,
     name: "No-Gi Takedowns",
@@ -226,19 +242,21 @@ export const curriculumPositions: Position[] = [
       { id: 61, name: "Takedown Defense - Downblock", description: "Defend shots with underhook", type: "escape", beltRequired: "white", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=mRIDD2zoKJ8" },
     ]
   },
-  {
-    id: 14,
-    name: "Rubber Guard",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "no-gi",
-    techniques: [
-      { id: 62, name: "Rubber Guard Entry", description: "High guard with leg control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-      { id: 63, name: "Gogoplata", description: "Choke using shin", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=PQ5Rv4JmEF8" },
-      { id: 64, name: "Rubber Guard Armbar", description: "Arm lock from rubber guard", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
-      { id: 65, name: "Rubber Guard Escape", description: "Stack and break grip", type: "escape", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
-    ]
-  },
+   {
+     id: 14,
+     name: "Rubber Guard",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "no-gi",
+     techniques: [
+       { id: 62, name: "Rubber Guard Entry", description: "High guard with leg control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 63, name: "Gogoplata", description: "Choke using shin", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=PQ5Rv4JmEF8" },
+       { id: 64, name: "Rubber Guard Armbar", description: "Arm lock from rubber guard", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 65, name: "Rubber Guard Escape", description: "Stack and break grip", type: "escape", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+       { id: 196, name: "Rubber Guard Triangle", description: "Triangle setup from rubber guard position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 197, name: "Rubber Guard Sweep", description: "Sweep using leg positioning and frame", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+     ]
+   },
   {
     id: 15,
     name: "Ashi Garami (Leg Locks)",
@@ -282,135 +300,167 @@ export const curriculumPositions: Position[] = [
       { id: 95, name: "Over-Under Pass", description: "Over-under body lock guard pass", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=4hAY12ghrGk" },
     ]
   },
-  {
-    id: 18,
-    name: "X-Guard",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "both",
-    techniques: [
-      { id: 96, name: "X-Guard Sweep", description: "Lift and dump opponent from X-guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=f7A1vv0-A2U" },
-      { id: 97, name: "Single Leg X Entry", description: "Enter single leg X from seated guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=Hl174fDTD7Q" },
-      { id: 98, name: "X-Guard Back Take", description: "Transition to back from X-guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=PfvLyeVBa4o" },
-    ]
-  },
-  {
-    id: 19,
-    name: "North-South",
-    category: "top_positions",
-    beltRequired: "blue",
-    trainingType: "both",
-    techniques: [
-      { id: 108, name: "North-South Kimura", description: "Shoulder lock from north-south position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=nPie9yUU4LM" },
-      { id: 109, name: "North-South Back Take", description: "Transition to back control from north-south", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=SAKV7M_yDUs" },
-    ]
-  },
-  {
-    id: 20,
-    name: "Lasso Guard",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "gi",
-    techniques: [
-      { id: 110, name: "Lasso Sweep", description: "Sweep using lasso sleeve and collar control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=avrcVQ2mQIw" },
-      { id: 111, name: "Triangle from Lasso", description: "Triangle choke using lasso leg control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DyQD86cvS7k" },
-      { id: 112, name: "Loop Choke", description: "Collar choke using opponent's own lapel", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=PFqYQ7gF7VQ" },
-    ]
-  },
-  {
-    id: 21,
-    name: "Reverse De La Riva",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "both",
-    techniques: [
-      { id: 113, name: "RDLR Sweep", description: "Dump and sweep from reverse De La Riva", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=a0UF6674jI0" },
-      { id: 114, name: "RDLR Back Take", description: "Take back using RDLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=9UWgyOO8Sjg" },
-    ]
-  },
-  {
-    id: 22,
-    name: "Z Guard / Knee Shield",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "both",
-    techniques: [
-      { id: 115, name: "Z Guard Sweep", description: "Sweep using knee shield and hip control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
-      { id: 116, name: "Z Guard Back Take", description: "Transition to back from knee shield position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
-    ]
-  },
-  {
-    id: 23,
-    name: "Guard Headquarters (HQ)",
-    category: "top_positions",
-    beltRequired: "blue",
-    trainingType: "both",
-    techniques: [
-      { id: 117, name: "Knee Cut Pass from HQ", description: "Knee slice pass from headquarters position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=peqZ1a2_sfE" },
-      { id: 118, name: "Backstep Pass from HQ", description: "Backstep around the legs to complete the pass", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VMkAZCbUN18" },
-      { id: 119, name: "Crab Ride", description: "Back harness control transition from top position", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+   {
+     id: 18,
+     name: "X-Guard",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "both",
+     techniques: [
+       { id: 96, name: "X-Guard Sweep", description: "Lift and dump opponent from X-guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=f7A1vv0-A2U" },
+       { id: 97, name: "Single Leg X Entry", description: "Enter single leg X from seated guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=Hl174fDTD7Q" },
+       { id: 98, name: "X-Guard Back Take", description: "Transition to back from X-guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=PfvLyeVBa4o" },
+       { id: 181, name: "X-Guard Footlock", description: "Foot lock setup from X-guard position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 182, name: "X-Guard to Single Leg", description: "Transition into single leg takedown from X", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=Hl174fDTD7Q" },
+       { id: 183, name: "Double X-Guard", description: "Both legs in X position for maximum control", type: "drill", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=f7A1vv0-A2U" },
      ]
-  },
-  {
-    id: 24,
-    name: "Crab Ride",
-    category: "top_positions",
-    beltRequired: "purple",
-    trainingType: "no-gi",
-    techniques: [
-      { id: 120, name: "Crab Ride Armlock", description: "Arm lock from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
-      { id: 121, name: "Crab Ride to Back", description: "Transition from crab ride to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
-      { id: 122, name: "Crab Ride Choke", description: "Neck crank from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
-    ]
-  },
-  {
-    id: 25,
-    name: "Inverted Guard",
-    category: "guard",
-    beltRequired: "purple",
-    trainingType: "both",
-    techniques: [
-      { id: 123, name: "Inverted Triangle", description: "Triangle choke from inverted guard position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
-      { id: 124, name: "Inverted Armbar", description: "Arm lock from inverted guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
-      { id: 125, name: "Entry to Inverted Guard", description: "How to safely enter and control inverted guard", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
-    ]
-  },
-  {
-    id: 26,
-    name: "K Guard",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "both",
-    techniques: [
-      { id: 126, name: "K Guard Sweep", description: "Sweep from K guard position using leg control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
-      { id: 127, name: "K Guard Armbar", description: "Straight armbar setup from K guard", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
-      { id: 128, name: "K Guard Back Take", description: "Transition to back control from K guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
-    ]
-  },
-  {
-    id: 27,
-    name: "Kesa Gatame",
-    category: "top_positions",
-    beltRequired: "white",
-    trainingType: "gi",
-    techniques: [
-      { id: 129, name: "Kesa Gatame Choke", description: "Collar choke from kesa gatame position", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
-      { id: 130, name: "Kesa Gatame Armbar", description: "Arm lock setup from kesa gatame", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
-      { id: 131, name: "Kesa Gatame Escape", description: "Hip escape from kesa gatame position", type: "escape", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
-    ]
-  },
-  {
-    id: 28,
-    name: "Octopus Guard",
-    category: "guard",
-    beltRequired: "blue",
-    trainingType: "gi",
-    techniques: [
-      { id: 132, name: "Octopus Guard Sweep", description: "Lapel-based sweep from octopus guard", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
-      { id: 133, name: "Octopus Triangle", description: "Triangle choke setup using lapel control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
-      { id: 134, name: "Octopus Guard Back Take", description: "Transition to back control from octopus guard", type: "transition", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
-    ]
-  },
+   },
+   {
+     id: 19,
+     name: "North-South",
+     category: "top_positions",
+     beltRequired: "blue",
+     trainingType: "both",
+     techniques: [
+       { id: 108, name: "North-South Kimura", description: "Shoulder lock from north-south position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=nPie9yUU4LM" },
+       { id: 109, name: "North-South Back Take", description: "Transition to back control from north-south", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=SAKV7M_yDUs" },
+       { id: 148, name: "North-South Choke", description: "Cross-collar strangle from north-south", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=fyqluZ0CAXI" },
+       { id: 149, name: "North-South Armbar", description: "Arm lock from north-south position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=Mc3v9VpM0uU" },
+       { id: 150, name: "North-South Escape Defense", description: "Maintaining control when opponent tries to escape", type: "drill", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+     ]
+   },
+   {
+     id: 20,
+     name: "Lasso Guard",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "gi",
+     techniques: [
+       { id: 110, name: "Lasso Sweep", description: "Sweep using lasso sleeve and collar control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=avrcVQ2mQIw" },
+       { id: 111, name: "Triangle from Lasso", description: "Triangle choke using lasso leg control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DyQD86cvS7k" },
+       { id: 112, name: "Loop Choke", description: "Collar choke using opponent's own lapel", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=PFqYQ7gF7VQ" },
+       { id: 157, name: "Lasso Entry & Control", description: "Establish lasso guard with sleeve and collar grips", type: "drill", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=avrcVQ2mQIw" },
+       { id: 158, name: "Lasso Back Take", description: "Take the back from lasso guard position", type: "transition", beltRequired: "purple", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=DyQD86cvS7k" },
+     ]
+   },
+   {
+     id: 21,
+     name: "Reverse De La Riva",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "both",
+     techniques: [
+       { id: 113, name: "RDLR Sweep", description: "Dump and sweep from reverse De La Riva", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=a0UF6674jI0" },
+       { id: 114, name: "RDLR Back Take", description: "Take back using RDLR hook", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=9UWgyOO8Sjg" },
+       { id: 151, name: "RDLR Leglock Entry", description: "Transition to leg lock positions from RDLR", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 152, name: "RDLR Hook Control", description: "Establish and maintain hook placement for control", type: "drill", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=a0UF6674jI0" },
+       { id: 153, name: "RDLR Escape Defense", description: "Defending when opponent tries to pressure escape", type: "escape", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=9UWgyOO8Sjg" },
+     ]
+   },
+   {
+     id: 22,
+     name: "Z Guard / Knee Shield",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "both",
+     techniques: [
+       { id: 115, name: "Z Guard Sweep", description: "Sweep using knee shield and hip control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
+       { id: 116, name: "Z Guard Back Take", description: "Transition to back from knee shield position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
+       { id: 154, name: "Knee Shield Frame & Distance", description: "Using knee shield to maintain distance and prevent passes", type: "drill", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+       { id: 155, name: "Z Guard Armbar", description: "Arm lock setup from Z guard position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 156, name: "Half Guard to Z Guard Transition", description: "Moving from half guard into Z guard position", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=gFMmfWLNsDI" },
+     ]
+   },
+   {
+     id: 23,
+     name: "Guard Headquarters (HQ)",
+     category: "top_positions",
+     beltRequired: "blue",
+     trainingType: "both",
+     techniques: [
+       { id: 117, name: "Knee Cut Pass from HQ", description: "Knee slice pass from headquarters position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=peqZ1a2_sfE" },
+       { id: 118, name: "Backstep Pass from HQ", description: "Backstep around the legs to complete the pass", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VMkAZCbUN18" },
+       { id: 119, name: "Crab Ride", description: "Back harness control transition from top position", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 184, name: "HQ Armbar", description: "Arm lock setup from headquarters position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 185, name: "HQ Transition to Mount", description: "Move from headquarters to mounted position", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+       { id: 186, name: "HQ Escape Defense", description: "Controlling when opponent tries to escape", type: "drill", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=peqZ1a2_sfE" },
+     ]
+   },
+   {
+     id: 24,
+     name: "Crab Ride",
+     category: "top_positions",
+     beltRequired: "purple",
+     trainingType: "no-gi",
+     techniques: [
+       { id: 120, name: "Crab Ride Armlock", description: "Arm lock from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 121, name: "Crab Ride to Back", description: "Transition from crab ride to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 122, name: "Crab Ride Choke", description: "Neck crank from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 178, name: "Crab Ride Entry", description: "Establish crab ride position with proper harness", type: "drill", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 179, name: "Crab Ride Shoulder Control", description: "Pressure and control using shoulder positioning", type: "drill", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+       { id: 180, name: "Crab Ride Ankle Lock", description: "Foot lock setup from crab ride", type: "attack", beltRequired: "brown", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+     ]
+   },
+   {
+     id: 25,
+     name: "Inverted Guard",
+     category: "guard",
+     beltRequired: "purple",
+     trainingType: "both",
+     techniques: [
+       { id: 123, name: "Inverted Triangle", description: "Triangle choke from inverted guard position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+       { id: 124, name: "Inverted Armbar", description: "Arm lock from inverted guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+       { id: 125, name: "Entry to Inverted Guard", description: "How to safely enter and control inverted guard", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+       { id: 175, name: "Inverted Guard Sweep", description: "Sweep opponent using inversion momentum", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+       { id: 176, name: "Inverted Omoplata", description: "Shoulder lock setup from inverted position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=w06XdYJnYAU" },
+       { id: 177, name: "Inverted Guard Back Take", description: "Transition to back control from inverted", type: "transition", beltRequired: "brown", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DXYwICronlg" },
+     ]
+   },
+   {
+     id: 26,
+     name: "K Guard",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "both",
+     techniques: [
+       { id: 126, name: "K Guard Sweep", description: "Sweep from K guard position using leg control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+       { id: 127, name: "K Guard Armbar", description: "Straight armbar setup from K guard", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+       { id: 128, name: "K Guard Back Take", description: "Transition to back control from K guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+       { id: 172, name: "K Guard Entry", description: "Establish K guard with deep foot placement on hip", type: "drill", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+       { id: 173, name: "K Guard Leg Lock Entry", description: "Transition into leg lock positions from K guard", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=5ZAqUQpsus8" },
+       { id: 174, name: "K Guard Against Knee Cut", description: "Defending knee slice pass from K guard", type: "escape", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+     ]
+   },
+   {
+     id: 27,
+     name: "Kesa Gatame",
+     category: "top_positions",
+     beltRequired: "white",
+     trainingType: "gi",
+     techniques: [
+       { id: 129, name: "Kesa Gatame Choke", description: "Collar choke from kesa gatame position", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+       { id: 130, name: "Kesa Gatame Armbar", description: "Arm lock setup from kesa gatame", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+       { id: 131, name: "Kesa Gatame Escape", description: "Hip escape from kesa gatame position", type: "escape", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+       { id: 166, name: "Kesa Gatame Transition to Mount", description: "Move from scarf hold to mount position", type: "transition", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+       { id: 167, name: "Kesa Gatame Lapel Choke", description: "Loop choke using lapel from kesa gatame", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=PFqYQ7gF7VQ" },
+       { id: 168, name: "Kesa Gatame Pressure Drill", description: "Maintaining tight position control", type: "drill", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+     ]
+   },
+   {
+     id: 28,
+     name: "Octopus Guard",
+     category: "guard",
+     beltRequired: "blue",
+     trainingType: "gi",
+     techniques: [
+       { id: 132, name: "Octopus Guard Sweep", description: "Lapel-based sweep from octopus guard", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+       { id: 133, name: "Octopus Triangle", description: "Triangle choke setup using lapel control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+       { id: 134, name: "Octopus Guard Back Take", description: "Transition to back control from octopus guard", type: "transition", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+       { id: 169, name: "Octopus Guard Entry", description: "Establish octopus guard with proper lapel and hook", type: "drill", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+       { id: 170, name: "Octopus Armbar", description: "Arm lock setup from octopus position", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+       { id: 171, name: "Octopus Guard Escape Defense", description: "Defending when opponent tries to pressure escape", type: "escape", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+     ]
+   },
    {
      id: 29,
      name: "Open Guard",
@@ -432,10 +482,14 @@ export const curriculumPositions: Position[] = [
      category: "top_positions",
      beltRequired: "white",
      trainingType: "both",
-      techniques: [
-        { id: 141, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
-        { id: 143, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
-      ]
+     techniques: [
+       { id: 141, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+       { id: 143, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+       { id: 144, name: "Seatbelt Grip Control", description: "Establish dominant seatbelt grip and maintain back control", type: "drill", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+       { id: 145, name: "Hook Placement & Elevation", description: "Effective hook placement to prevent escape and elevate opponent", type: "drill", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
+       { id: 146, name: "Back Take from Closed Guard", description: "Arm drag and arm-across technique to take the back from guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 147, name: "Back Take from Turtle", description: "Rolling back take and seat belt entry from turtle position", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+     ]
    },
 ];
 
