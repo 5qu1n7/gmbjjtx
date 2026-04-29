@@ -288,8 +288,8 @@ export default function Home() {
                       </span>
                     </div>
                     <p className="text-gray-500 text-sm mb-4 leading-relaxed">{tech.description}</p>
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${beltBadgeClass(tech.beltRequired)}`}>
                           {tech.beltRequired}+
                         </span>
@@ -307,7 +307,7 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => toggleCompletion(tech.id)}
-                        className={`text-xs px-3 py-1 rounded-full font-semibold transition shrink-0 ${
+                        className={`w-full text-xs px-3 py-2 rounded-full font-semibold transition ${
                           drilled
                             ? 'bg-green-600 text-white hover:bg-green-700'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
