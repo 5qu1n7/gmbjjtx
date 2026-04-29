@@ -39,6 +39,13 @@ export default function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProp
     if (!supabase || cooldown > 0) return;
     setStatus('loading');
 
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      setStatus('error');
+      setErrorMsg("You're already signed in. Refresh the page or use the Sign Out button.");
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: { emailRedirectTo: window.location.origin + (redirectTo || '') },
