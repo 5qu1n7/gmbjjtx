@@ -411,30 +411,33 @@ export const curriculumPositions: Position[] = [
       { id: 134, name: "Octopus Guard Back Take", description: "Transition to back control from octopus guard", type: "transition", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
     ]
   },
-  {
-    id: 29,
-    name: "Open Guard",
-    category: "guard",
-    beltRequired: "white",
-    trainingType: "both",
-    techniques: [
-      { id: 135, name: "Open Guard Sweep", description: "Basic hook sweep from open guard", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
-      { id: 136, name: "Open Guard Triangle", description: "Triangle setup from open guard position", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
-      { id: 137, name: "Open Guard Armbar", description: "Armbar from open guard with collar control", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
-    ]
-  },
-  {
-    id: 30,
-    name: "Back Control",
-    category: "top_positions",
-    beltRequired: "white",
-    trainingType: "both",
-    techniques: [
-      { id: 138, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
-      { id: 139, name: "Rear Armbar", description: "Arm lock from back control position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
-      { id: 140, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
-    ]
-  },
+   {
+     id: 29,
+     name: "Open Guard",
+     category: "guard",
+     beltRequired: "white",
+     trainingType: "both",
+     techniques: [
+       { id: 135, name: "Collar & Sleeve Control", description: "Establish collar and sleeve grips for control and distance management", type: "drill", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 136, name: "Open Guard Sweep", description: "Basic hook sweep from open guard position with hip bump", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+       { id: 137, name: "Triangle from Open Guard", description: "Set up triangle choke using legs and off-balance", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+       { id: 138, name: "Open Guard Frame & Distance", description: "Use frames and foot placement to maintain distance and prevent passes", type: "drill", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DvVL4piYGbk" },
+       { id: 139, name: "Rubber Guard Entry", description: "Establish underhook and butterfly guard position for arm drag control", type: "transition", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=w06XdYJnYAU" },
+       { id: 140, name: "K-Guard Basics", description: "Deep grip on leg with inside foot on hip - setup for leg lock entries", type: "drill", beltRequired: "blue", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
+     ]
+   },
+   {
+     id: 30,
+     name: "Back Control",
+     category: "top_positions",
+     beltRequired: "white",
+     trainingType: "both",
+     techniques: [
+       { id: 141, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+       { id: 142, name: "Rear Armbar", description: "Arm lock from back control position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
+       { id: 143, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
+     ]
+   },
 ];
 
 // 52-week rotating schedule - maps week numbers to position IDs
