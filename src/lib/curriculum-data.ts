@@ -349,6 +349,90 @@ export const curriculumPositions: Position[] = [
       { id: 117, name: "Knee Cut Pass from HQ", description: "Knee slice pass from headquarters position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=peqZ1a2_sfE" },
       { id: 118, name: "Backstep Pass from HQ", description: "Backstep around the legs to complete the pass", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=VMkAZCbUN18" },
       { id: 119, name: "Crab Ride", description: "Back harness control transition from top position", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+     ]
+  },
+  {
+    id: 24,
+    name: "Crab Ride",
+    category: "top_positions",
+    beltRequired: "purple",
+    trainingType: "no-gi",
+    techniques: [
+      { id: 120, name: "Crab Ride Armlock", description: "Arm lock from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+      { id: 121, name: "Crab Ride to Back", description: "Transition from crab ride to back control", type: "transition", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+      { id: 122, name: "Crab Ride Choke", description: "Neck crank from crab ride position", type: "attack", beltRequired: "purple", trainingType: "no-gi", videoUrl: "https://www.youtube.com/watch?v=9FC4guomBHE" },
+    ]
+  },
+  {
+    id: 25,
+    name: "Inverted Guard",
+    category: "guard",
+    beltRequired: "purple",
+    trainingType: "both",
+    techniques: [
+      { id: 123, name: "Inverted Triangle", description: "Triangle choke from inverted guard position", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+      { id: 124, name: "Inverted Armbar", description: "Arm lock from inverted guard", type: "attack", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+      { id: 125, name: "Entry to Inverted Guard", description: "How to safely enter and control inverted guard", type: "transition", beltRequired: "purple", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=5mE_XPYVBWc" },
+    ]
+  },
+  {
+    id: 26,
+    name: "K Guard",
+    category: "guard",
+    beltRequired: "blue",
+    trainingType: "both",
+    techniques: [
+      { id: 126, name: "K Guard Sweep", description: "Sweep from K guard position using leg control", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+      { id: 127, name: "K Guard Armbar", description: "Straight armbar setup from K guard", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+      { id: 128, name: "K Guard Back Take", description: "Transition to back control from K guard", type: "transition", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=GH_2i2tOSJg" },
+    ]
+  },
+  {
+    id: 27,
+    name: "Kesa Gatame",
+    category: "top_positions",
+    beltRequired: "white",
+    trainingType: "gi",
+    techniques: [
+      { id: 129, name: "Kesa Gatame Choke", description: "Collar choke from kesa gatame position", type: "attack", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+      { id: 130, name: "Kesa Gatame Armbar", description: "Arm lock setup from kesa gatame", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+      { id: 131, name: "Kesa Gatame Escape", description: "Hip escape from kesa gatame position", type: "escape", beltRequired: "white", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=bHneNFyONwo" },
+    ]
+  },
+  {
+    id: 28,
+    name: "Octopus Guard",
+    category: "guard",
+    beltRequired: "blue",
+    trainingType: "gi",
+    techniques: [
+      { id: 132, name: "Octopus Guard Sweep", description: "Lapel-based sweep from octopus guard", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+      { id: 133, name: "Octopus Triangle", description: "Triangle choke setup using lapel control", type: "attack", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+      { id: 134, name: "Octopus Guard Back Take", description: "Transition to back control from octopus guard", type: "transition", beltRequired: "blue", trainingType: "gi", videoUrl: "https://www.youtube.com/watch?v=KHB5MgKIJIk" },
+    ]
+  },
+  {
+    id: 29,
+    name: "Open Guard",
+    category: "guard",
+    beltRequired: "white",
+    trainingType: "both",
+    techniques: [
+      { id: 135, name: "Open Guard Sweep", description: "Basic hook sweep from open guard", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=6oo323AQ0JI" },
+      { id: 136, name: "Open Guard Triangle", description: "Triangle setup from open guard position", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=ndi0GwXiJe4" },
+      { id: 137, name: "Open Guard Armbar", description: "Armbar from open guard with collar control", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=XUrxSihViJI" },
+    ]
+  },
+  {
+    id: 30,
+    name: "Back Control",
+    category: "top_positions",
+    beltRequired: "white",
+    trainingType: "both",
+    techniques: [
+      { id: 138, name: "Rear Naked Choke Finish", description: "High and low finish variations of RNC", type: "attack", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=LbYUxFJ9kQg" },
+      { id: 139, name: "Rear Armbar", description: "Arm lock from back control position", type: "attack", beltRequired: "blue", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=DrCp_RLXpG8" },
+      { id: 140, name: "Back Control Escape Defense", description: "Preventing escapes while on the back", type: "transition", beltRequired: "white", trainingType: "both", videoUrl: "https://www.youtube.com/watch?v=_p8TK68fjo8" },
     ]
   },
 ];
