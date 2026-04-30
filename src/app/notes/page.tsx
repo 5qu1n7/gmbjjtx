@@ -135,7 +135,7 @@ export default function NotesPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <main className="max-w-2xl mx-auto p-6 md:p-8">
+        <main className="max-w-2xl mx-auto p-6 md:p-8 relative z-10">
           <div className="mb-8">
             <h1 className="text-3xl font-bold">Training Notes</h1>
             <p className="text-gray-500 mt-1">Week {currentWeek} of 52</p>

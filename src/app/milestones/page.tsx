@@ -208,7 +208,7 @@ export default function MilestonesPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <main className="max-w-3xl mx-auto p-6 md:p-8 space-y-10">
+        <main className="max-w-3xl mx-auto p-6 md:p-8 space-y-10 relative z-10">
 
         {/* Belt Journey */}
         <section>
