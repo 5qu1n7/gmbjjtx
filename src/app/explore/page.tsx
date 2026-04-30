@@ -21,6 +21,22 @@ function beltBadgeClass(belt: string): string {
   return 'bg-gray-100 text-gray-700';
 }
 
+function beltCardBackground(belt: string): string {
+  if (belt === 'blue')   return 'bg-blue-50 border-blue-200';
+  if (belt === 'purple') return 'bg-purple-50 border-purple-200';
+  if (belt === 'brown')  return 'bg-amber-50 border-amber-200';
+  if (belt === 'black')  return 'bg-gray-100 border-gray-300';
+  return 'bg-white border-gray-200';
+}
+
+function beltCardText(belt: string): string {
+  if (belt === 'blue')   return 'text-blue-900';
+  if (belt === 'purple') return 'text-purple-900';
+  if (belt === 'brown')  return 'text-amber-900';
+  if (belt === 'black')  return 'text-gray-900';
+  return 'text-gray-900';
+}
+
 function VideoModal({ 
   tech, 
   isOpen, 
@@ -227,171 +243,171 @@ export default function ExplorePage() {
                         </div>
                       </button>
 
-                      {/* Techniques - Expanded View */}
-                      {isExpanded && matchingTechniques.length > 0 && (
-                        <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
-                          <div className="space-y-3">
-                            {matchingTechniques.map((technique) => {
-                              const videoId = getYouTubeVideoId(technique.videoUrl);
-                              const isDrilled = drilledIds.has(technique.id);
-                              return (
-                                <div key={technique.id} className="bg-white rounded-lg p-4 border border-gray-200">
-                                  <div className={`flex flex-col ${isMobile ? '' : 'md:flex-row'} items-start justify-between gap-3`}>
-                                    <div className="flex-1">
-                                      <h3 className="font-semibold text-gray-900">{technique.name} {isDrilled && '✓'}</h3>
-                                      <p className="text-sm text-gray-600 mt-1">{technique.description}</p>
-                                      <div className="flex flex-wrap gap-2 mt-3">
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${beltBadgeClass(technique.beltRequired)}`}>
-                                          {technique.beltRequired}+
-                                        </span>
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${
-                                          technique.type === 'attack'     ? 'bg-red-100 text-red-800' :
-                                          technique.type === 'escape'     ? 'bg-green-100 text-green-800' :
-                                          technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
-                                          'bg-blue-100 text-blue-800'
-                                        }`}>
-                                          {technique.type}
-                                        </span>
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${
-                                          technique.trainingType === 'gi' ? 'bg-indigo-100 text-indigo-800' :
-                                          technique.trainingType === 'no-gi' ? 'bg-orange-100 text-orange-800' :
-                                          'bg-gray-100 text-gray-800'
-                                        }`}>
-                                          {technique.trainingType === 'both' ? 'Gi & No-Gi' : technique.trainingType}
-                                        </span>
-                                      </div>
-                                    </div>
-                                    <div className="flex gap-2 whitespace-nowrap">
-                                      {videoId && (
-                                        <button
-                                          onClick={() => {
-                                            setSelectedTechForVideo(technique);
-                                            setVideoModalOpen(true);
-                                          }}
-                                          className="px-3 py-2 rounded-lg bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition"
-                                        >
-                                          ▶ Watch
-                                        </button>
-                                      )}
-                                      <button
-                                        onClick={() => toggleDrilled(technique.id)}
-                                        className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                                          isDrilled
-                                            ? 'bg-green-600 text-white hover:bg-green-700'
-                                            : 'bg-gray-400 text-white hover:bg-gray-500'
-                                        }`}
-                                      >
-                                        {isDrilled ? '✓' : 'Drill'}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-lg text-gray-500">No positions or techniques match your search.</p>
-              </div>
-            )
-          ) : (
-            // CATEGORIES VIEW
-            filteredCategories.length > 0 ? (
-              <div className="space-y-4">
-                {filteredCategories.map((category) => {
-                  const isExpanded = expandedCategories.has(category.id);
-                  const matchingTechniques = category.techniques.filter(tech =>
-                    searchQuery === '' || tech.name.toLowerCase().includes(searchQuery.toLowerCase())
-                  );
+                       {/* Techniques - Expanded View Grid */}
+                       {isExpanded && matchingTechniques.length > 0 && (
+                         <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
+                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                             {matchingTechniques.map((technique) => {
+                               const videoId = getYouTubeVideoId(technique.videoUrl);
+                               const isDrilled = drilledIds.has(technique.id);
+                               return (
+                                 <div 
+                                   key={technique.id} 
+                                   className={`rounded-lg p-4 border h-full flex flex-col transition hover:shadow-md ${beltCardBackground(technique.beltRequired)}`}
+                                 >
+                                   <div className="flex-1 flex flex-col">
+                                     <h3 className={`font-semibold text-sm ${beltCardText(technique.beltRequired)} truncate`}>
+                                       {technique.name} {isDrilled && '✓'}
+                                     </h3>
+                                     <p className={`text-xs mt-1 line-clamp-2 ${beltCardText(technique.beltRequired)}`}>
+                                       {technique.description}
+                                     </p>
+                                     <div className="flex flex-wrap gap-1 mt-2 flex-1 content-start">
+                                       <span className={`text-xs px-2 py-0.5 rounded font-medium ${beltBadgeClass(technique.beltRequired)}`}>
+                                         {technique.beltRequired}+
+                                       </span>
+                                       <span className={`text-xs px-2 py-0.5 rounded font-medium ${
+                                         technique.type === 'attack'     ? 'bg-red-100 text-red-800' :
+                                         technique.type === 'escape'     ? 'bg-green-100 text-green-800' :
+                                         technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
+                                         'bg-blue-100 text-blue-800'
+                                       }`}>
+                                         {technique.type}
+                                       </span>
+                                     </div>
+                                   </div>
+                                   <div className="flex gap-1 mt-3 pt-2 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
+                                     {videoId && (
+                                       <button
+                                         onClick={() => {
+                                           setSelectedTechForVideo(technique);
+                                           setVideoModalOpen(true);
+                                         }}
+                                         className="flex-1 px-2 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
+                                         title="Watch video"
+                                       >
+                                         ▶
+                                       </button>
+                                     )}
+                                     <button
+                                       onClick={() => toggleDrilled(technique.id)}
+                                       className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition ${
+                                         isDrilled
+                                           ? 'bg-green-600 text-white hover:bg-green-700'
+                                           : 'bg-gray-400 text-white hover:bg-gray-500'
+                                       }`}
+                                       title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                     >
+                                       {isDrilled ? '✓' : 'Drill'}
+                                     </button>
+                                   </div>
+                                 </div>
+                               );
+                             })}
+                           </div>
+                         </div>
+                       )}
+                     </div>
+                   );
+                 })}
+               </div>
+             ) : (
+               <div className="text-center py-12">
+                 <p className="text-lg text-gray-500">No positions or techniques match your search.</p>
+               </div>
+             )
+           ) : (
+             // CATEGORIES VIEW
+             filteredCategories.length > 0 ? (
+               <div className="space-y-4">
+                 {filteredCategories.map((category) => {
+                   const isExpanded = expandedCategories.has(category.id);
+                   const matchingTechniques = category.techniques.filter(tech =>
+                     searchQuery === '' || tech.name.toLowerCase().includes(searchQuery.toLowerCase())
+                   );
 
-                  return (
-                    <div key={category.id} className="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition">
-                      {/* Category Header - Clickable */}
-                      <button
-                        onClick={() => toggleCategory(category.id)}
-                        className="w-full px-6 py-4 text-left hover:bg-gray-50 transition flex items-center justify-between"
-                      >
-                        <div className="flex-1">
-                          <h2 className="text-lg md:text-xl font-semibold text-gray-900">{category.name}</h2>
-                          <p className="text-sm text-gray-600 mt-1">
-                            {category.description} • {category.techniques.length} techniques
-                          </p>
-                        </div>
-                        <span className={`text-gray-400 transition ${isExpanded ? 'rotate-180' : ''}`}>
-                          ▼
-                        </span>
-                      </button>
+                   return (
+                     <div key={category.id} className="border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition">
+                       {/* Category Header - Clickable */}
+                       <button
+                         onClick={() => toggleCategory(category.id)}
+                         className="w-full px-6 py-4 text-left hover:bg-gray-50 transition flex items-center justify-between"
+                       >
+                         <div className="flex-1">
+                           <h2 className="text-lg md:text-xl font-semibold text-gray-900">{category.name}</h2>
+                           <p className="text-sm text-gray-600 mt-1">
+                             {category.description} • {category.techniques.length} techniques
+                           </p>
+                         </div>
+                         <span className={`text-gray-400 transition ${isExpanded ? 'rotate-180' : ''}`}>
+                           ▼
+                         </span>
+                       </button>
 
-                      {/* Techniques - Expanded View */}
-                      {isExpanded && matchingTechniques.length > 0 && (
-                        <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
-                          <div className="space-y-3">
-                            {matchingTechniques.map((technique) => {
-                              const videoId = getYouTubeVideoId(technique.videoUrl);
-                              const isDrilled = drilledIds.has(technique.id);
-                              return (
-                                <div key={technique.id} className="bg-white rounded-lg p-4 border border-gray-200">
-                                  <div className={`flex flex-col ${isMobile ? '' : 'md:flex-row'} items-start justify-between gap-3`}>
-                                    <div className="flex-1">
-                                      <h3 className="font-semibold text-gray-900">{technique.name} {isDrilled && '✓'}</h3>
-                                      <p className="text-sm text-gray-600 mt-1">{technique.description}</p>
-                                      <div className="flex flex-wrap gap-2 mt-3">
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${beltBadgeClass(technique.beltRequired)}`}>
-                                          {technique.beltRequired}+
-                                        </span>
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${
-                                          technique.type === 'attack'     ? 'bg-red-100 text-red-800' :
-                                          technique.type === 'escape'     ? 'bg-green-100 text-green-800' :
-                                          technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
-                                          'bg-blue-100 text-blue-800'
-                                        }`}>
-                                          {technique.type}
-                                        </span>
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${
-                                          technique.trainingType === 'gi' ? 'bg-indigo-100 text-indigo-800' :
-                                          technique.trainingType === 'no-gi' ? 'bg-orange-100 text-orange-800' :
-                                          'bg-gray-100 text-gray-800'
-                                        }`}>
-                                          {technique.trainingType === 'both' ? 'Gi & No-Gi' : technique.trainingType}
-                                        </span>
-                                      </div>
-                                    </div>
-                                    <div className="flex gap-2 whitespace-nowrap">
-                                      {videoId && (
-                                        <button
-                                          onClick={() => {
-                                            setSelectedTechForVideo(technique);
-                                            setVideoModalOpen(true);
-                                          }}
-                                          className="px-3 py-2 rounded-lg bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition"
-                                        >
-                                          ▶ Watch
-                                        </button>
-                                      )}
-                                      <button
-                                        onClick={() => toggleDrilled(technique.id)}
-                                        className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                                          isDrilled
-                                            ? 'bg-green-600 text-white hover:bg-green-700'
-                                            : 'bg-gray-400 text-white hover:bg-gray-500'
-                                        }`}
-                                      >
-                                        {isDrilled ? '✓' : 'Drill'}
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
+                       {/* Techniques - Expanded View Grid */}
+                       {isExpanded && matchingTechniques.length > 0 && (
+                         <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
+                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                             {matchingTechniques.map((technique) => {
+                               const videoId = getYouTubeVideoId(technique.videoUrl);
+                               const isDrilled = drilledIds.has(technique.id);
+                               return (
+                                 <div 
+                                   key={technique.id} 
+                                   className={`rounded-lg p-4 border h-full flex flex-col transition hover:shadow-md ${beltCardBackground(technique.beltRequired)}`}
+                                 >
+                                   <div className="flex-1 flex flex-col">
+                                     <h3 className={`font-semibold text-sm ${beltCardText(technique.beltRequired)} truncate`}>
+                                       {technique.name} {isDrilled && '✓'}
+                                     </h3>
+                                     <p className={`text-xs mt-1 line-clamp-2 ${beltCardText(technique.beltRequired)}`}>
+                                       {technique.description}
+                                     </p>
+                                     <div className="flex flex-wrap gap-1 mt-2 flex-1 content-start">
+                                       <span className={`text-xs px-2 py-0.5 rounded font-medium ${beltBadgeClass(technique.beltRequired)}`}>
+                                         {technique.beltRequired}+
+                                       </span>
+                                       <span className={`text-xs px-2 py-0.5 rounded font-medium ${
+                                         technique.type === 'attack'     ? 'bg-red-100 text-red-800' :
+                                         technique.type === 'escape'     ? 'bg-green-100 text-green-800' :
+                                         technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
+                                         'bg-blue-100 text-blue-800'
+                                       }`}>
+                                         {technique.type}
+                                       </span>
+                                     </div>
+                                   </div>
+                                   <div className="flex gap-1 mt-3 pt-2 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
+                                     {videoId && (
+                                       <button
+                                         onClick={() => {
+                                           setSelectedTechForVideo(technique);
+                                           setVideoModalOpen(true);
+                                         }}
+                                         className="flex-1 px-2 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
+                                         title="Watch video"
+                                       >
+                                         ▶
+                                       </button>
+                                     )}
+                                     <button
+                                       onClick={() => toggleDrilled(technique.id)}
+                                       className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition ${
+                                         isDrilled
+                                           ? 'bg-green-600 text-white hover:bg-green-700'
+                                           : 'bg-gray-400 text-white hover:bg-gray-500'
+                                       }`}
+                                       title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                     >
+                                       {isDrilled ? '✓' : 'Drill'}
+                                     </button>
+                                   </div>
+                                 </div>
+                               );
+                             })}
+                           </div>
+                         </div>
+                       )}
                     </div>
                   );
                 })}
