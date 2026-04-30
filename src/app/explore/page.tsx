@@ -283,7 +283,7 @@ export default function ExplorePage() {
                                               setSelectedTechForVideo(technique);
                                               setVideoModalOpen(true);
                                             }}
-                                            className="flex-1 text-sm px-3 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 transition text-center"
+                                            className="flex-1 text-sm px-4 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition"
                                             title="Watch video"
                                           >
                                             ▶ Watch
@@ -291,17 +291,16 @@ export default function ExplorePage() {
                                         )}
                                         <button
                                           onClick={() => toggleDrilled(technique.id)}
-                                          className={`flex-1 text-sm px-3 py-2 rounded-lg font-semibold transition text-center ${
+                                          className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition ${
                                             isDrilled
-                                              ? 'bg-green-600 text-white hover:bg-green-700'
-                                              : 'bg-gray-400 text-white hover:bg-gray-500'
+                                              ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+                                              : 'bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600'
                                           }`}
                                           title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
-
-                                       >
-                                         {isDrilled ? '✓ Drilled' : 'Mark drilled'}
-                                       </button>
-                                     </div>
+                                        >
+                                          {isDrilled ? '✓ Drilled' : 'Mark drilled'}
+                                        </button>
+                                      </div>
                                    </div>
                                  );
                                })}
@@ -385,7 +384,7 @@ export default function ExplorePage() {
                                               setSelectedTechForVideo(technique);
                                               setVideoModalOpen(true);
                                             }}
-                                            className="flex-1 text-sm px-3 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 transition text-center"
+                                            className="flex-1 text-sm px-4 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition"
                                             title="Watch video"
                                           >
                                             ▶ Watch
@@ -393,10 +392,10 @@ export default function ExplorePage() {
                                         )}
                                         <button
                                           onClick={() => toggleDrilled(technique.id)}
-                                          className={`flex-1 text-sm px-3 py-2 rounded-lg font-semibold transition text-center ${
+                                          className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition ${
                                             isDrilled
-                                              ? 'bg-green-600 text-white hover:bg-green-700'
-                                              : 'bg-gray-400 text-white hover:bg-gray-500'
+                                              ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+                                              : 'bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600'
                                           }`}
                                           title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
                                         >
