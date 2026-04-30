@@ -137,8 +137,8 @@ export default function NotesPage() {
       >
         <main className="max-w-2xl mx-auto p-6 md:p-8 relative z-10">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-white">Training Notes</h1>
-            <p className="text-gray-300 mt-1">Week {currentWeek} of 52</p>
+            <h1 className="text-3xl font-bold text-gray-900">Training Notes</h1>
+            <p className="text-gray-700 mt-1">Week {currentWeek} of 52</p>
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-6 mb-6">
