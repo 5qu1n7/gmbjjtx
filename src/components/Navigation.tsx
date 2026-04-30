@@ -46,14 +46,14 @@ export default function Navigation() {
     <>
       <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
       <nav className="bg-white shadow-sm border-b">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href="/" className="text-xl font-bold text-gray-900">BJJ Curriculum</a>
-            <div className="flex gap-4 text-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
+            <a href="/" className="text-lg sm:text-xl font-bold text-gray-900 whitespace-nowrap">BJJ Curriculum</a>
+            <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm">
               <a href="/" className="text-gray-600 hover:text-gray-900 transition">Calendar</a>
-              <a href="/notes" className="text-gray-600 hover:text-gray-900 transition">My Notes</a>
+              <a href="/notes" className="text-gray-600 hover:text-gray-900 transition">Notes</a>
               <a href="/milestones" className="text-gray-600 hover:text-gray-900 transition">Milestones</a>
-              <a href="/explore" className="text-gray-600 hover:text-gray-900 transition">Browse All Techniques</a>
+              <a href="/explore" className="text-gray-600 hover:text-gray-900 transition">Browse</a>
               {(role === 'admin' || role === 'coach') && (
                 <a href="/admin" className="text-blue-600 hover:text-blue-800 font-medium transition">Admin</a>
               )}
@@ -63,14 +63,14 @@ export default function Navigation() {
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="text-sm text-gray-600 hover:text-gray-900 transition"
+                className="text-xs sm:text-sm text-gray-600 hover:text-gray-900 transition whitespace-nowrap"
               >
                 Sign Out
               </button>
             ) : (
               <button
                 onClick={() => setAuthModalOpen(true)}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium transition"
+                className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 font-medium transition whitespace-nowrap"
               >
                 Sign In
               </button>
