@@ -233,14 +233,9 @@ export default function ExplorePage() {
                             {position.category.replace(/_/g, ' ')} • {position.trainingType.toUpperCase()} • {position.techniques.length} techniques
                           </p>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <span className={`text-xs px-3 py-1 rounded-full font-medium ${beltBadgeClass(position.beltRequired)}`}>
-                            {position.beltRequired}+
-                          </span>
-                          <span className={`text-gray-400 transition ${isExpanded ? 'rotate-180' : ''}`}>
-                            ▼
-                          </span>
-                        </div>
+                        <span className={`text-gray-400 transition ${isExpanded ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
                       </button>
 
                        {/* Techniques - Expanded View Grid */}
