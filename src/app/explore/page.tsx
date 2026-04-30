@@ -132,7 +132,16 @@ export default function ExplorePage() {
         onClose={() => setVideoModalOpen(false)}
       />
 
-      <div className="min-h-screen bg-gray-50">
+      <div 
+        className="min-h-screen bg-gray-50"
+        style={{
+          backgroundImage: 'url(/gustavo-machado.jpg)',
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center bottom',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         {/* Header */}
         <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -184,7 +193,7 @@ export default function ExplorePage() {
         </header>
 
         {/* Main Content */}
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           {viewMode === 'positions' ? (
             // POSITIONS VIEW
             filteredPositions.length > 0 ? (
