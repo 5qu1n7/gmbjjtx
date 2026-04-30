@@ -272,46 +272,46 @@ export default function ExplorePage() {
                                          technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
                                          'bg-blue-100 text-blue-800'
                                        }`}>
-                                         {technique.type}
-                                       </span>
-                                     </div>
-                                   </div>
-                                   <div className="flex gap-1 mt-3 pt-2 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
-                                     {videoId && (
-                                       <button
-                                         onClick={() => {
-                                           setSelectedTechForVideo(technique);
-                                           setVideoModalOpen(true);
-                                         }}
-                                         className="flex-1 px-2 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
-                                         title="Watch video"
-                                       >
-                                         ▶
-                                       </button>
-                                     )}
-                                     <button
-                                       onClick={() => toggleDrilled(technique.id)}
-                                       className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition ${
-                                         isDrilled
-                                           ? 'bg-green-600 text-white hover:bg-green-700'
-                                           : 'bg-gray-400 text-white hover:bg-gray-500'
-                                       }`}
-                                       title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
-                                     >
-                                       {isDrilled ? '✓' : 'Drill'}
-                                     </button>
-                                   </div>
-                                 </div>
-                               );
-                             })}
-                           </div>
-                         </div>
-                       )}
-                     </div>
-                   );
-                 })}
-               </div>
-             ) : (
+                                          {technique.type}
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div className="flex gap-1.5 mt-3 pt-2.5 border-t-2" style={{borderColor: 'currentColor', opacity: 0.15}}>
+                                      {videoId && (
+                                        <button
+                                          onClick={() => {
+                                            setSelectedTechForVideo(technique);
+                                            setVideoModalOpen(true);
+                                          }}
+                                          className="flex-1 px-2.5 py-2 rounded-lg bg-red-600 text-white text-xs font-bold hover:bg-red-700 active:bg-red-800 shadow-md hover:shadow-lg transition"
+                                          title="Watch video"
+                                        >
+                                          ▶
+                                        </button>
+                                      )}
+                                      <button
+                                        onClick={() => toggleDrilled(technique.id)}
+                                        className={`flex-1 px-2.5 py-2 rounded-lg text-xs font-bold shadow-md hover:shadow-lg transition ${
+                                          isDrilled
+                                            ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+                                            : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800'
+                                        }`}
+                                        title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                      >
+                                        {isDrilled ? '✓' : 'Drill'}
+                                      </button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
                <div className="text-center py-12">
                  <p className="text-lg text-gray-500">No positions or techniques match your search.</p>
                </div>
@@ -372,46 +372,46 @@ export default function ExplorePage() {
                                          technique.type === 'escape'     ? 'bg-green-100 text-green-800' :
                                          technique.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
                                          'bg-blue-100 text-blue-800'
-                                       }`}>
-                                         {technique.type}
-                                       </span>
-                                     </div>
-                                   </div>
-                                   <div className="flex gap-1 mt-3 pt-2 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
-                                     {videoId && (
-                                       <button
-                                         onClick={() => {
-                                           setSelectedTechForVideo(technique);
-                                           setVideoModalOpen(true);
-                                         }}
-                                         className="flex-1 px-2 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700 transition"
-                                         title="Watch video"
-                                       >
-                                         ▶
-                                       </button>
-                                     )}
-                                     <button
-                                       onClick={() => toggleDrilled(technique.id)}
-                                       className={`flex-1 px-2 py-1.5 rounded-lg text-xs font-medium transition ${
-                                         isDrilled
-                                           ? 'bg-green-600 text-white hover:bg-green-700'
-                                           : 'bg-gray-400 text-white hover:bg-gray-500'
-                                       }`}
-                                       title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
-                                     >
-                                       {isDrilled ? '✓' : 'Drill'}
-                                     </button>
-                                   </div>
-                                 </div>
-                               );
-                             })}
-                           </div>
-                         </div>
-                       )}
-                    </div>
-                  );
-                })}
-              </div>
+                                        }`}>
+                                          {technique.type}
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div className="flex gap-1.5 mt-3 pt-2.5 border-t-2" style={{borderColor: 'currentColor', opacity: 0.15}}>
+                                      {videoId && (
+                                        <button
+                                          onClick={() => {
+                                            setSelectedTechForVideo(technique);
+                                            setVideoModalOpen(true);
+                                          }}
+                                          className="flex-1 px-2.5 py-2 rounded-lg bg-red-600 text-white text-xs font-bold hover:bg-red-700 active:bg-red-800 shadow-md hover:shadow-lg transition"
+                                          title="Watch video"
+                                        >
+                                          ▶
+                                        </button>
+                                      )}
+                                      <button
+                                        onClick={() => toggleDrilled(technique.id)}
+                                        className={`flex-1 px-2.5 py-2 rounded-lg text-xs font-bold shadow-md hover:shadow-lg transition ${
+                                          isDrilled
+                                            ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+                                            : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800'
+                                        }`}
+                                        title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                      >
+                                        {isDrilled ? '✓' : 'Drill'}
+                                      </button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                     </div>
+                   );
+                 })}
+               </div>
             ) : (
               <div className="text-center py-12">
                 <p className="text-lg text-gray-500">No categories or techniques match your search.</p>
