@@ -274,47 +274,52 @@ export default function ExplorePage() {
                                         }`}>
                                             {technique.type}
                                           </span>
-                                        </div>
                                       </div>
-                                      <div className="flex gap-2 mt-4 pt-3 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
-                                        {videoId && (
-                                          <button
-                                            onClick={() => {
-                                              setSelectedTechForVideo(technique);
-                                              setVideoModalOpen(true);
-                                            }}
-                                            className="flex-1 text-sm px-4 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition"
-                                            title="Watch video"
-                                          >
-                                            ▶ Watch
-                                          </button>
-                                        )}
+                                    </div>
+                                    <div className="flex gap-2 mt-4 pt-3 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
+                                      {videoId && (
                                         <button
-                                          onClick={() => toggleDrilled(technique.id)}
-                                          className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition ${
-                                            isDrilled
-                                              ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
-                                              : 'bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600'
-                                          }`}
-                                          title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                          onClick={() => {
+                                            setSelectedTechForVideo(technique);
+                                            setVideoModalOpen(true);
+                                          }}
+                                          className="flex-1 text-sm px-4 py-2 rounded-lg font-medium text-white transition"
+                                          style={{backgroundColor: '#dc2626'}}
+                                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#b91c1c'}
+                                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dc2626'}
+                                          title="Watch video"
                                         >
-                                          {isDrilled ? '✓ Drilled' : 'Mark drilled'}
+                                          ▶ Watch
                                         </button>
-                                      </div>
-                                   </div>
-                                 );
-                               })}
-                             </div>
-                           </div>
-                         )}
-                       </div>
-                     );
-                   })}
-                 </div>
-               ) : (
-                <div className="text-center py-12">
-                  <p className="text-lg text-gray-500">No positions or techniques match your search.</p>
+                                      )}
+                                      <button
+                                        onClick={() => toggleDrilled(technique.id)}
+                                        className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition`}
+                                        style={{
+                                          backgroundColor: isDrilled ? '#16a34a' : '#9ca3af',
+                                          color: 'white'
+                                        }}
+                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = isDrilled ? '#15803d' : '#78716c'}
+                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = isDrilled ? '#16a34a' : '#9ca3af'}
+                                        title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                      >
+                                        {isDrilled ? '✓ Drilled' : 'Mark drilled'}
+                                      </button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
+              ) : (
+               <div className="text-center py-12">
+                 <p className="text-lg text-gray-500">No positions or techniques match your search.</p>
+               </div>
               )
             ) : (
               // CATEGORIES VIEW
@@ -376,42 +381,47 @@ export default function ExplorePage() {
                                            {technique.type}
                                          </span>
                                        </div>
-                                     </div>
-                                      <div className="flex gap-2 mt-4 pt-3 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
-                                        {videoId && (
-                                          <button
-                                            onClick={() => {
-                                              setSelectedTechForVideo(technique);
-                                              setVideoModalOpen(true);
-                                            }}
-                                            className="flex-1 text-sm px-4 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 active:bg-red-800 transition"
-                                            title="Watch video"
-                                          >
-                                            ▶ Watch
-                                          </button>
-                                        )}
-                                        <button
-                                          onClick={() => toggleDrilled(technique.id)}
-                                          className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition ${
-                                            isDrilled
-                                              ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
-                                              : 'bg-gray-400 text-white hover:bg-gray-500 active:bg-gray-600'
-                                          }`}
-                                          title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
-                                        >
-                                          {isDrilled ? '✓ Drilled' : 'Mark drilled'}
-                                        </button>
                                       </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          )}
-                       </div>
-                     );
-                   })}
-                 </div>
+                                       <div className="flex gap-2 mt-4 pt-3 border-t" style={{borderColor: 'currentColor', opacity: 0.1}}>
+                                         {videoId && (
+                                           <button
+                                             onClick={() => {
+                                               setSelectedTechForVideo(technique);
+                                               setVideoModalOpen(true);
+                                             }}
+                                             className="flex-1 text-sm px-4 py-2 rounded-lg font-medium text-white transition"
+                                             style={{backgroundColor: '#dc2626'}}
+                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#b91c1c'}
+                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#dc2626'}
+                                             title="Watch video"
+                                           >
+                                             ▶ Watch
+                                           </button>
+                                         )}
+                                         <button
+                                           onClick={() => toggleDrilled(technique.id)}
+                                           className={`flex-1 text-sm px-4 py-2 rounded-lg font-semibold transition`}
+                                           style={{
+                                             backgroundColor: isDrilled ? '#16a34a' : '#9ca3af',
+                                             color: 'white'
+                                           }}
+                                           onMouseEnter={(e) => e.currentTarget.style.backgroundColor = isDrilled ? '#15803d' : '#78716c'}
+                                           onMouseLeave={(e) => e.currentTarget.style.backgroundColor = isDrilled ? '#16a34a' : '#9ca3af'}
+                                           title={isDrilled ? 'Unmark drilled' : 'Mark drilled'}
+                                         >
+                                           {isDrilled ? '✓ Drilled' : 'Mark drilled'}
+                                         </button>
+                                       </div>
+                                     </div>
+                                   );
+                                 })}
+                               </div>
+                             </div>
+                           )}
+                        </div>
+                      );
+                    })}
+                  </div>
             ) : (
               <div className="text-center py-12">
                 <p className="text-lg text-gray-500">No categories or techniques match your search.</p>
