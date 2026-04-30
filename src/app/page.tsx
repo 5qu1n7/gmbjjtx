@@ -232,10 +232,10 @@ export default function Home() {
           {/* Controls Panel */}
           <div className="bg-white/85 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
             {/* Week Navigation */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-2">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 mb-2">
               <button
                 onClick={prevWeek}
-                className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
               >
                 ← Prev Week
               </button>
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
               <button
                 onClick={nextWeek}
-                className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
               >
                 Next Week →
               </button>
@@ -380,10 +380,10 @@ export default function Home() {
           </div>
 
           {/* Explore Button */}
-          <div className="flex justify-center">
+          <div className="flex justify-center px-4">
             <Link
               href="/explore"
-              className="px-6 py-2 rounded-lg bg-gray-600 text-white font-medium hover:bg-gray-700 transition"
+              className="w-full sm:w-auto px-6 py-2 rounded-lg bg-gray-600 text-white font-medium hover:bg-gray-700 transition text-center"
             >
               Browse All Techniques
             </Link>
