@@ -67,7 +67,7 @@ function VideoModal({
   );
 }
 
-function TechniqueCard({ 
+function TechniqueItem({ 
   tech, 
   drilled, 
   onToggleCompletion,
@@ -81,41 +81,14 @@ function TechniqueCard({
   const videoId = getYouTubeVideoId(tech.videoUrl);
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden hover:bg-white/15 transition">
-      {/* Thumbnail or play button area */}
-      <div className="bg-black/40 aspect-video relative group cursor-pointer overflow-hidden flex items-center justify-center">
-        {videoId ? (
-          <>
-            <img 
-              src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`}
-              alt={tech.name}
-              className="w-full h-full object-cover group-hover:opacity-60 transition-opacity"
-            />
-            <button
-              onClick={() => onWatchClick(tech)}
-              className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/60 transition"
-            >
-              <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="text-white text-xl ml-1">▶</span>
-              </div>
-            </button>
-          </>
-        ) : (
-          <span className="text-gray-400 text-sm">No video</span>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-4">
-        <h3 className="text-white font-semibold text-base mb-1 line-clamp-2">{tech.name}</h3>
-        <p className="text-gray-200 text-xs mb-3 line-clamp-2">{tech.description}</p>
-
-        {/* Metadata */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          <span className={`text-xs px-2 py-0.5 rounded font-medium ${beltBadgeClass(tech.beltRequired)}`}>
-            {tech.beltRequired}+
-          </span>
-          <span className={`text-xs px-2 py-0.5 rounded font-medium ${
+    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/15 transition">
+      <div className="flex items-start justify-between gap-4 mb-3">
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold text-white mb-2">{tech.name}</h3>
+          <p className="text-gray-200">{tech.description}</p>
+        </div>
+        <div className="flex flex-col gap-2 shrink-0">
+          <span className={`text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap ${
             tech.type === 'attack'     ? 'bg-red-100 text-red-800' :
             tech.type === 'escape'     ? 'bg-green-100 text-green-800' :
             tech.type === 'transition' ? 'bg-yellow-100 text-yellow-800' :
@@ -123,29 +96,31 @@ function TechniqueCard({
           }`}>
             {tech.type}
           </span>
+          <span className={`text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap ${beltBadgeClass(tech.beltRequired)}`}>
+            {tech.beltRequired}+
+          </span>
         </div>
+      </div>
 
-        {/* Actions */}
-        <div className="flex gap-2 text-xs">
-          {videoId && (
-            <button
-              onClick={() => onWatchClick(tech)}
-              className="flex-1 px-2 py-1.5 rounded bg-red-600 text-white font-medium hover:bg-red-700 transition"
-            >
-              ▶ Watch
-            </button>
-          )}
+      <div className="flex gap-3 flex-wrap">
+        {videoId && (
           <button
-            onClick={() => onToggleCompletion(tech.id)}
-            className={`flex-1 px-2 py-1.5 rounded font-medium transition ${
-              drilled
-                ? 'bg-green-600 text-white hover:bg-green-700'
-                : 'bg-gray-500 text-white hover:bg-gray-600'
-            }`}
+            onClick={() => onWatchClick(tech)}
+            className="text-sm px-4 py-2 rounded-full font-medium bg-red-600 text-white hover:bg-red-700 transition"
           >
-            {drilled ? '✓' : 'Mark'}
+            ▶ Watch Video
           </button>
-        </div>
+        )}
+        <button
+          onClick={() => onToggleCompletion(tech.id)}
+          className={`text-sm px-4 py-2 rounded-full font-semibold transition ${
+            drilled
+              ? 'bg-green-600 text-white hover:bg-green-700'
+              : 'bg-gray-400 text-white hover:bg-gray-500'
+          }`}
+        >
+          {drilled ? '✓ Drilled' : 'Mark drilled'}
+        </button>
       </div>
     </div>
   );
@@ -248,16 +223,16 @@ export default function Home() {
   // Get weekly techniques
   let displayTechniques: Technique[] = [];
   let displayTitle = '';
-  let displayDescription = '';
+  let displaySubtitle = '';
 
   if (viewMode === 'positions' && weekPosition) {
     displayTechniques = getTechniquesForWeek(weekPosition, currentWeek, beltFilter);
     displayTitle = weekPosition.name;
-    displayDescription = `${weekPosition.category.replace(/_/g, ' ')} • ${weekPosition.trainingType.toUpperCase()} • ${weekPosition.beltRequired}+`;
+    displaySubtitle = `${weekPosition.category.replace(/_/g, ' ')} • ${weekPosition.trainingType.toUpperCase()}`;
   } else if (viewMode === 'categories' && weekCategory) {
     displayTechniques = getTechniquesForCategoryWeek(weekCategory, currentWeek, beltFilter);
     displayTitle = weekCategory.name;
-    displayDescription = weekCategory.description;
+    displaySubtitle = weekCategory.description;
   }
 
   // Apply filters
@@ -278,76 +253,76 @@ export default function Home() {
       />
 
       <div 
-        className="min-h-screen bg-fixed bg-cover bg-center"
+        className="min-h-screen bg-fixed bg-cover bg-center flex flex-col items-center justify-center p-4"
         style={{
           backgroundImage: 'url(/gustavo-machado.jpg)',
           backgroundAttachment: 'fixed'
         }}
       >
-        {/* Subtle overlay */}
-        <div className="fixed inset-0 bg-black/25 pointer-events-none" />
+        {/* Overlay */}
+        <div className="fixed inset-0 bg-black/30 pointer-events-none" />
 
-        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Header - sticky controls */}
-          <div className="sticky top-0 z-20 bg-white/90 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20 shadow-lg">
-            <div className="flex flex-col gap-4">
-              {/* Week navigation */}
-              <div className="flex items-center justify-between gap-4">
-                <button
-                  onClick={prevWeek}
-                  className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
-                >
-                  ← Prev
-                </button>
-                <div className="text-center flex-1">
-                  <div className="text-3xl font-bold text-gray-900">Week {currentWeek}</div>
-                  <div className="text-sm text-gray-500 mt-1">{getWeekDateRange(currentWeek)}</div>
-                </div>
-                <button
-                  onClick={nextWeek}
-                  className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
-                >
-                  Next →
-                </button>
+        {/* Main Content */}
+        <div className="relative z-10 max-w-2xl w-full">
+          {/* Controls Panel */}
+          <div className="bg-white/95 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20 shadow-lg">
+            {/* Week Navigation */}
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <button
+                onClick={prevWeek}
+                className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
+              >
+                ← Prev Week
+              </button>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-gray-900">Week {currentWeek}</div>
+                <div className="text-sm text-gray-500 mt-1">{getWeekDateRange(currentWeek)}</div>
+              </div>
+              <button
+                onClick={nextWeek}
+                className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
+              >
+                Next Week →
+              </button>
+            </div>
+
+            {/* Mode & Filters */}
+            <div className="border-t border-gray-200 pt-4 space-y-4">
+              {/* Title */}
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">{displayTitle}</h2>
+                <p className="text-gray-600 text-sm mt-1">{displaySubtitle}</p>
               </div>
 
-              {/* Title and description */}
-              <div className="border-t border-gray-200 pt-4">
-                <h1 className="text-3xl font-bold text-gray-900 mb-1">{displayTitle}</h1>
-                <p className="text-gray-600">{displayDescription}</p>
-              </div>
-
-              {/* Controls row */}
-              <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center border-t border-gray-200 pt-4">
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setViewMode('positions')}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      viewMode === 'positions'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Positions
-                  </button>
-                  <button
-                    onClick={() => setViewMode('categories')}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      viewMode === 'categories'
-                        ? 'bg-green-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    Categories
-                  </button>
-                </div>
+              {/* Controls Row */}
+              <div className="flex flex-wrap gap-3 items-center">
+                <button
+                  onClick={() => setViewMode('positions')}
+                  className={`px-4 py-2 rounded-lg font-medium transition ${
+                    viewMode === 'positions'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  Positions
+                </button>
+                <button
+                  onClick={() => setViewMode('categories')}
+                  className={`px-4 py-2 rounded-lg font-medium transition ${
+                    viewMode === 'categories'
+                      ? 'bg-green-600 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  Categories
+                </button>
 
                 <select
                   value={trainingFilter}
                   onChange={(e) => setTrainingFilter(e.target.value as TrainingType | 'all')}
-                  className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 font-medium"
+                  className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
                 >
-                  <option value="all">All Training Types</option>
+                  <option value="all">All Types</option>
                   <option value="gi">Gi</option>
                   <option value="no-gi">No-Gi</option>
                   <option value="both">Both</option>
@@ -356,7 +331,7 @@ export default function Home() {
                 <select
                   value={beltFilter}
                   onChange={(e) => setBeltFilter(e.target.value as BeltFilter)}
-                  className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 font-medium"
+                  className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
                 >
                   <option value="all">All Belts</option>
                   <option value="white">White+</option>
@@ -367,15 +342,15 @@ export default function Home() {
                 </select>
 
                 {authChecked && user && completedCount > 0 && (
-                  <div className="text-sm text-gray-700 font-medium ml-auto">
-                    {completedCount}/{ALL_TECHNIQUES.length} drilled
+                  <div className="text-xs text-gray-600 ml-auto">
+                    {completedCount}/{ALL_TECHNIQUES.length} techniques drilled
                   </div>
                 )}
 
                 {authChecked && !user && (
                   <button
                     onClick={() => setAuthModalOpen(true)}
-                    className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition ml-auto"
+                    className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition ml-auto"
                   >
                     Sign in
                   </button>
@@ -384,33 +359,31 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Techniques Grid */}
-          <div className="mb-12">
+          {/* Techniques Display */}
+          <div className="space-y-4">
             {filteredTechniques.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredTechniques.map((tech) => {
-                  const drilled = completedIds.has(tech.id);
-                  return (
-                    <TechniqueCard
-                      key={tech.id}
-                      tech={tech}
-                      drilled={drilled}
-                      onToggleCompletion={toggleCompletion}
-                      onWatchClick={(t) => {
-                        setSelectedTechForVideo(t);
-                        setVideoModalOpen(true);
-                      }}
-                    />
-                  );
-                })}
-              </div>
+              filteredTechniques.map((tech) => {
+                const drilled = completedIds.has(tech.id);
+                return (
+                  <TechniqueItem
+                    key={tech.id}
+                    tech={tech}
+                    drilled={drilled}
+                    onToggleCompletion={toggleCompletion}
+                    onWatchClick={(t) => {
+                      setSelectedTechForVideo(t);
+                      setVideoModalOpen(true);
+                    }}
+                  />
+                );
+              })
             ) : (
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-12 text-center">
-                <p className="text-lg text-gray-100">No techniques match your filters.</p>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8 text-center">
+                <p className="text-gray-100 text-lg">No techniques match your filters.</p>
               </div>
             )}
           </div>
-        </main>
+        </div>
       </div>
     </>
   );
