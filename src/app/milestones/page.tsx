@@ -214,8 +214,8 @@ export default function MilestonesPage() {
         <section>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="text-xl font-bold">Belt Journey</h2>
-              <p className="text-sm text-gray-500">Track every promotion and stripe</p>
+              <h2 className="text-xl font-bold text-white">Belt Journey</h2>
+              <p className="text-sm text-gray-300">Track every promotion and stripe</p>
             </div>
             <button onClick={() => setShowBeltForm(v => !v)} className="btn-primary text-sm">
               {showBeltForm ? 'Cancel' : '+ Add Promotion'}
@@ -331,8 +331,8 @@ export default function MilestonesPage() {
         <section>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="text-xl font-bold">Tournament Results</h2>
-              <p className="text-sm text-gray-500">Your competition record</p>
+              <h2 className="text-xl font-bold text-white">Tournament Results</h2>
+              <p className="text-sm text-gray-300">Your competition record</p>
             </div>
             <button onClick={() => setShowTournamentForm(v => !v)} className="btn-primary text-sm">
               {showTournamentForm ? 'Cancel' : '+ Add Result'}
