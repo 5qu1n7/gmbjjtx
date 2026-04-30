@@ -379,10 +379,10 @@ export default function Home() {
             )}
           </div>
 
-          {/* Explore Button */}
+          {/* Browse Button */}
           <div className="flex justify-center px-4">
             <Link
-              href="/explore"
+              href="/browse"
               className="w-full sm:w-auto px-6 py-2 rounded-lg bg-gray-600 text-white font-medium hover:bg-gray-700 transition text-center"
             >
               Browse All Techniques
