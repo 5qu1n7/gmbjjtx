@@ -7,6 +7,7 @@ import {
   getCurrentWeek, getPositionForWeek, getWeekDateRange, getTechniquesForWeek, curriculumPositions,
   curriculumCategories, getTechniquesForCategoryWeek, generate52WeekCategorySchedule
 } from '@/lib/curriculum-data';
+import { markTechniqueDrilled, unmarkTechniqueDrilled, getDrilledTechniques } from '@/lib/drilled-tracking';
 import type { Position, TrainingType, Category, Technique } from '@/lib/curriculum-data';
 import AuthModal from '@/components/AuthModal';
 
@@ -82,11 +83,11 @@ function TechniqueItem({
   const videoId = getYouTubeVideoId(tech.videoUrl);
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 hover:bg-white/15 transition">
-      <div className="flex items-start justify-between gap-4 mb-3">
+    <div className="bg-white/85 backdrop-blur-sm border border-gray-100 rounded-xl p-6 hover:shadow-md transition">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4 mb-3">
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-white mb-2">{tech.name}</h3>
-          <p className="text-gray-200">{tech.description}</p>
+          <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{tech.name}</h3>
+          <p className="text-gray-600">{tech.description}</p>
         </div>
         <div className="flex flex-col gap-2 shrink-0">
           <span className={`text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap ${
@@ -103,18 +104,18 @@ function TechniqueItem({
         </div>
       </div>
 
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex gap-2 flex-wrap">
         {videoId && (
           <button
             onClick={() => onWatchClick(tech)}
-            className="text-sm px-4 py-2 rounded-full font-medium bg-red-600 text-white hover:bg-red-700 transition"
+            className="text-sm px-4 py-2 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 transition"
           >
-            ▶ Watch Video
+            ▶ Watch
           </button>
         )}
         <button
           onClick={() => onToggleCompletion(tech.id)}
-          className={`text-sm px-4 py-2 rounded-full font-semibold transition ${
+          className={`text-sm px-4 py-2 rounded-lg font-semibold transition ${
             drilled
               ? 'bg-green-600 text-white hover:bg-green-700'
               : 'bg-gray-400 text-white hover:bg-gray-500'
@@ -135,80 +136,42 @@ export default function Home() {
   const [trainingFilter, setTrainingFilter] = useState<TrainingType | 'all'>('all');
   const [beltFilter, setBeltFilter] = useState<BeltFilter>('all');
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [completedIds, setCompletedIds] = useState<Set<number>>(new Set());
+  const [drilledIds, setDrilledIds] = useState<Set<number>>(new Set());
   const [selectedTechForVideo, setSelectedTechForVideo] = useState<Technique | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     checkUser();
+    setDrilledIds(getDrilledTechniques());
+    
+    // Check if mobile
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   async function checkUser() {
-    if (!supabase) { setAuthChecked(true); loadFromLocalStorage(); return; }
+    if (!supabase) { setAuthChecked(true); return; }
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
     setAuthChecked(true);
-    if (user) {
-      await loadAndMigrateCompletions(user.id);
-    } else {
-      loadFromLocalStorage();
-    }
   }
 
-  function loadFromLocalStorage() {
-    try {
-      const raw = localStorage.getItem('bjj_completions');
-      if (raw) setCompletedIds(new Set(JSON.parse(raw)));
-    } catch {}
-  }
-
-  async function loadAndMigrateCompletions(userId: string) {
-    if (!supabase) return;
-    try {
-      const raw = localStorage.getItem('bjj_completions');
-      if (raw) {
-        const localIds: number[] = JSON.parse(raw);
-        if (localIds.length > 0) {
-          await supabase.from('technique_completions').upsert(
-            localIds.map(id => ({ user_id: userId, technique_id: id }))
-          );
-        }
-        localStorage.removeItem('bjj_completions');
-      }
-    } catch {}
-
-    const { data } = await supabase
-      .from('technique_completions')
-      .select('technique_id')
-      .eq('user_id', userId);
-
-    if (data) setCompletedIds(new Set(data.map((r: { technique_id: number }) => r.technique_id)));
-  }
-
-  async function toggleCompletion(techId: number) {
-    const wasDrilled = completedIds.has(techId);
-
-    setCompletedIds(prev => {
-      const next = new Set(prev);
-      if (next.has(techId)) next.delete(techId); else next.add(techId);
-      return next;
-    });
-
-    if (user && supabase) {
-      if (wasDrilled) {
-        await supabase.from('technique_completions')
-          .delete()
-          .eq('user_id', user.id)
-          .eq('technique_id', techId);
-      } else {
-        await supabase.from('technique_completions')
-          .upsert({ user_id: user.id, technique_id: techId });
-      }
-    } else {
-      setCompletedIds(prev => {
-        try { localStorage.setItem('bjj_completions', JSON.stringify([...prev])); } catch {}
-        return prev;
+  function toggleDrilled(techId: number) {
+    const wasDrilled = drilledIds.has(techId);
+    
+    if (wasDrilled) {
+      unmarkTechniqueDrilled(techId);
+      setDrilledIds(prev => {
+        const next = new Set(prev);
+        next.delete(techId);
+        return next;
       });
+    } else {
+      markTechniqueDrilled(techId);
+      setDrilledIds(prev => new Set([...prev, techId]));
     }
   }
 
@@ -242,7 +205,7 @@ export default function Home() {
     (beltFilter === 'all' || tech.beltRequired === beltFilter)
   );
 
-  const completedCount = [...completedIds].filter(id => ALL_TECHNIQUES.some(t => t.id === id)).length;
+  const drilledCount = drilledIds.size;
 
   return (
     <>
@@ -254,37 +217,27 @@ export default function Home() {
       />
 
       <div 
-        className="min-h-screen bg-fixed bg-center flex flex-col items-center justify-center p-4"
-        style={{
-          backgroundImage: 'url(/gustavo-machado.jpg)',
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'center center',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="min-h-screen bg-gray-50 flex flex-col items-center justify-start pt-8 p-4"
       >
-        {/* Overlay */}
-        <div className="fixed inset-0 bg-black/30 pointer-events-none" />
-
         {/* Main Content */}
-        <div className="relative z-10 max-w-2xl w-full">
+        <main className="max-w-3xl w-full space-y-8">
           {/* Controls Panel */}
-          <div className="bg-white/95 backdrop-blur-md rounded-lg p-6 mb-8 border border-white/20 shadow-lg">
+          <div className="bg-white/85 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
             {/* Week Navigation */}
-            <div className="flex items-center justify-between gap-4 mb-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-2">
               <button
                 onClick={prevWeek}
-                className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
+                className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
               >
                 ← Prev Week
               </button>
               <div className="text-center">
-                <div className="text-4xl font-bold text-gray-900">Week {currentWeek}</div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-900">Week {currentWeek}</div>
                 <div className="text-sm text-gray-500 mt-1">{getWeekDateRange(currentWeek)}</div>
               </div>
               <button
                 onClick={nextWeek}
-                className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition"
+                className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition"
               >
                 Next Week →
               </button>
@@ -299,14 +252,14 @@ export default function Home() {
               </div>
 
               {/* Controls Row */}
-              <div className="flex flex-wrap gap-3 items-center">
+              <div className={`flex ${isMobile ? 'flex-col gap-2' : 'flex-wrap gap-3'} items-center`}>
                 <button
                   onClick={() => setViewMode('positions')}
                   className={`px-4 py-2 rounded-lg font-medium transition ${
                     viewMode === 'positions'
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  } ${isMobile ? 'w-full' : ''}`}
                 >
                   Positions
                 </button>
@@ -315,72 +268,95 @@ export default function Home() {
                   className={`px-4 py-2 rounded-lg font-medium transition ${
                     viewMode === 'categories'
                       ? 'bg-green-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  } ${isMobile ? 'w-full' : ''}`}
                 >
                   Categories
                 </button>
 
-                <select
-                  value={trainingFilter}
-                  onChange={(e) => setTrainingFilter(e.target.value as TrainingType | 'all')}
-                  className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
-                >
-                  <option value="all">All Types</option>
-                  <option value="gi">Gi</option>
-                  <option value="no-gi">No-Gi</option>
-                  <option value="both">Both</option>
-                </select>
+                {!isMobile && (
+                  <>
+                    <select
+                      value={trainingFilter}
+                      onChange={(e) => setTrainingFilter(e.target.value as TrainingType | 'all')}
+                      className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
+                    >
+                      <option value="all">All Types</option>
+                      <option value="gi">Gi</option>
+                      <option value="no-gi">No-Gi</option>
+                      <option value="both">Both</option>
+                    </select>
 
-                <select
-                  value={beltFilter}
-                  onChange={(e) => setBeltFilter(e.target.value as BeltFilter)}
-                  className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
-                >
-                  <option value="all">All Belts</option>
-                  <option value="white">White+</option>
-                  <option value="blue">Blue+</option>
-                  <option value="purple">Purple+</option>
-                  <option value="brown">Brown+</option>
-                  <option value="black">Black+</option>
-                </select>
+                    <select
+                      value={beltFilter}
+                      onChange={(e) => setBeltFilter(e.target.value as BeltFilter)}
+                      className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm"
+                    >
+                      <option value="all">All Belts</option>
+                      <option value="white">White+</option>
+                      <option value="blue">Blue+</option>
+                      <option value="purple">Purple+</option>
+                      <option value="brown">Brown+</option>
+                      <option value="black">Black+</option>
+                    </select>
 
-                {authChecked && user && completedCount > 0 && (
-                  <div className="text-xs text-gray-600 ml-auto">
-                    {completedCount}/{ALL_TECHNIQUES.length} techniques drilled
-                  </div>
+                    {authChecked && drilledCount > 0 && (
+                      <div className="text-xs text-gray-600 ml-auto">
+                        {drilledCount} technique{drilledCount !== 1 ? 's' : ''} drilled
+                      </div>
+                    )}
+                  </>
                 )}
-
-                {authChecked && !user && (
-                  <button
-                    onClick={() => setAuthModalOpen(true)}
-                    className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition ml-auto"
-                  >
-                    Sign in
-                  </button>
-                )}
-
-                <Link
-                  href="/explore"
-                  className="px-4 py-2 rounded-lg bg-gray-600 text-white text-sm font-medium hover:bg-gray-700 transition"
-                >
-                  Explore All
-                </Link>
               </div>
+
+              {/* Mobile filters */}
+              {isMobile && (
+                <div className="flex flex-col gap-2 pt-2 border-t border-gray-200">
+                  <select
+                    value={trainingFilter}
+                    onChange={(e) => setTrainingFilter(e.target.value as TrainingType | 'all')}
+                    className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm w-full"
+                  >
+                    <option value="all">All Types</option>
+                    <option value="gi">Gi</option>
+                    <option value="no-gi">No-Gi</option>
+                    <option value="both">Both</option>
+                  </select>
+
+                  <select
+                    value={beltFilter}
+                    onChange={(e) => setBeltFilter(e.target.value as BeltFilter)}
+                    className="px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 text-sm w-full"
+                  >
+                    <option value="all">All Belts</option>
+                    <option value="white">White+</option>
+                    <option value="blue">Blue+</option>
+                    <option value="purple">Purple+</option>
+                    <option value="brown">Brown+</option>
+                    <option value="black">Black+</option>
+                  </select>
+
+                  {authChecked && drilledCount > 0 && (
+                    <div className="text-xs text-gray-600 text-center">
+                      {drilledCount} technique{drilledCount !== 1 ? 's' : ''} drilled
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Techniques Display */}
+          {/* Techniques Grid */}
           <div className="space-y-4">
             {filteredTechniques.length > 0 ? (
               filteredTechniques.map((tech) => {
-                const drilled = completedIds.has(tech.id);
+                const drilled = drilledIds.has(tech.id);
                 return (
                   <TechniqueItem
                     key={tech.id}
                     tech={tech}
                     drilled={drilled}
-                    onToggleCompletion={toggleCompletion}
+                    onToggleCompletion={toggleDrilled}
                     onWatchClick={(t) => {
                       setSelectedTechForVideo(t);
                       setVideoModalOpen(true);
@@ -389,12 +365,22 @@ export default function Home() {
                 );
               })
             ) : (
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-8 text-center">
-                <p className="text-gray-100 text-lg">No techniques match your filters.</p>
+              <div className="bg-white/85 backdrop-blur-sm border border-gray-100 rounded-xl p-8 text-center">
+                <p className="text-gray-600 text-lg">No techniques match your filters.</p>
               </div>
             )}
           </div>
-        </div>
+
+          {/* Explore Button */}
+          <div className="flex justify-center">
+            <Link
+              href="/explore"
+              className="px-6 py-2 rounded-lg bg-gray-600 text-white font-medium hover:bg-gray-700 transition"
+            >
+              Browse All Techniques
+            </Link>
+          </div>
+        </main>
       </div>
     </>
   );
