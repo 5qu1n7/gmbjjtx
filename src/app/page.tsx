@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { 
   getCurrentWeek, getPositionForWeek, getWeekDateRange, getTechniquesForWeek, curriculumPositions,
@@ -355,6 +356,13 @@ export default function Home() {
                     Sign in
                   </button>
                 )}
+
+                <Link
+                  href="/explore"
+                  className="px-4 py-2 rounded-lg bg-gray-600 text-white text-sm font-medium hover:bg-gray-700 transition"
+                >
+                  Explore All
+                </Link>
               </div>
             </div>
           </div>
