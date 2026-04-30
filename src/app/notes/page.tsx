@@ -115,18 +115,18 @@ export default function NotesPage() {
             <button onClick={() => setAuthModalOpen(true)} className="btn-primary px-8 py-2.5">
               Sign In
             </button>
-          </div>
-        </main>
-      </>
-    );
-  }
+           </div>
+         </main>
+       </>
+     );
+   }
 
   return (
     <>
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-      <main 
-        className="min-h-screen p-6 md:p-8 max-w-2xl mx-auto"
+      <div 
+        className="min-h-screen bg-gray-50"
         style={{
           backgroundImage: 'url(/gustavo-machado.jpg)',
           backgroundAttachment: 'fixed',
@@ -135,12 +135,13 @@ export default function NotesPage() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Training Notes</h1>
-          <p className="text-gray-500 mt-1">Week {currentWeek} of 52</p>
-        </div>
+        <main className="max-w-2xl mx-auto p-6 md:p-8">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold">Training Notes</h1>
+            <p className="text-gray-500 mt-1">Week {currentWeek} of 52</p>
+          </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-6 mb-6">
+          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-6 mb-6">
           {/* Difficulty */}
           <div>
             <label className="block text-sm font-semibold mb-3">Session Difficulty</label>
@@ -233,7 +234,8 @@ export default function NotesPage() {
             )}
           </div>
         )}
-      </main>
+        </main>
+      </div>
     </>
   );
 }

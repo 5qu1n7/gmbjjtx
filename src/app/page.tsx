@@ -217,7 +217,7 @@ export default function Home() {
       />
 
       <div 
-        className="min-h-screen bg-gray-50 flex flex-col items-center justify-start pt-8 p-4"
+        className="min-h-screen bg-gray-50"
         style={{
           backgroundImage: 'url(/gustavo-machado.jpg)',
           backgroundAttachment: 'fixed',
@@ -227,7 +227,8 @@ export default function Home() {
         }}
       >
         {/* Main Content */}
-        <main className="max-w-3xl w-full space-y-8 relative z-10">
+        <div className="flex flex-col items-center justify-start pt-8 p-4">
+          <main className="max-w-3xl w-full space-y-8 relative z-10">
           {/* Controls Panel */}
           <div className="bg-white/85 backdrop-blur-sm rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
             {/* Week Navigation */}
@@ -387,7 +388,8 @@ export default function Home() {
               Browse All Techniques
             </Link>
           </div>
-        </main>
+          </main>
+        </div>
       </div>
     </>
   );
