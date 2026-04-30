@@ -548,19 +548,50 @@ export function getPositionForWeek(week: number, beltLevel: 'white' | 'blue' | '
 
 export function getCurrentWeek(): number {
   const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 1);
-  const diff = now.getTime() - start.getTime();
+  const year = now.getFullYear();
+  
+  // Find the first Sunday of the year
+  const jan1 = new Date(year, 0, 1);
+  let firstSunday = new Date(jan1);
+  const dayOfWeek = firstSunday.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  
+  // If Jan 1 is not Sunday, move to the next Sunday
+  if (dayOfWeek !== 0) {
+    firstSunday.setDate(firstSunday.getDate() + (7 - dayOfWeek));
+  }
+  
+  // If current date is before first Sunday, we're in week 0 (return 1)
+  if (now < firstSunday) {
+    return 1;
+  }
+  
+  const diff = now.getTime() - firstSunday.getTime();
   const oneWeek = 1000 * 60 * 60 * 24 * 7;
-  return Math.ceil(diff / oneWeek);
+  return Math.floor(diff / oneWeek) + 1;
 }
 
 export function getWeekDateRange(week: number): string {
   const year = new Date().getFullYear();
+  
+  // Find the first Sunday of the year
   const jan1 = new Date(year, 0, 1);
-  const startMs = jan1.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000;
-  const endMs = startMs + 6 * 24 * 60 * 60 * 1000;
+  let firstSunday = new Date(jan1);
+  const dayOfWeek = firstSunday.getDay(); // 0 = Sunday
+  
+  if (dayOfWeek !== 0) {
+    firstSunday.setDate(firstSunday.getDate() + (7 - dayOfWeek));
+  }
+  
+  // Calculate start date for this week (Sunday)
+  const startDate = new Date(firstSunday);
+  startDate.setDate(startDate.getDate() + (week - 1) * 7);
+  
+  // Calculate end date (Saturday)
+  const endDate = new Date(startDate);
+  endDate.setDate(endDate.getDate() + 6);
+  
   const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  return `${fmt(new Date(startMs))} – ${fmt(new Date(endMs))}`;
+  return `${fmt(startDate)} – ${fmt(endDate)}`;
 }
 
 /**
