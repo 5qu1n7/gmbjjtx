@@ -254,12 +254,13 @@ export default function Home() {
       />
 
       <div 
-        className="min-h-screen bg-fixed bg-cover bg-center flex flex-col items-center justify-center p-4"
+        className="min-h-screen bg-fixed bg-center flex flex-col items-center justify-center p-4"
         style={{
           backgroundImage: 'url(/gustavo-machado.jpg)',
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center center',
-          backgroundSize: 'cover'
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
         }}
       >
         {/* Overlay */}
