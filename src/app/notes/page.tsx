@@ -125,7 +125,16 @@ export default function NotesPage() {
     <>
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-      <main className="min-h-screen p-6 md:p-8 max-w-2xl mx-auto">
+      <main 
+        className="min-h-screen p-6 md:p-8 max-w-2xl mx-auto"
+        style={{
+          backgroundImage: 'url(/gustavo-machado.jpg)',
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center bottom',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Training Notes</h1>
           <p className="text-gray-500 mt-1">Week {currentWeek} of 52</p>

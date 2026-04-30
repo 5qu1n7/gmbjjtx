@@ -223,8 +223,7 @@ export default function Home() {
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center bottom',
           backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.95
+          backgroundRepeat: 'no-repeat'
         }}
       >
         {/* Main Content */}

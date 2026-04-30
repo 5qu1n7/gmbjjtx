@@ -198,7 +198,16 @@ export default function MilestonesPage() {
   return (
     <>
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-      <main className="max-w-3xl mx-auto p-6 md:p-8 space-y-10">
+      <main 
+        className="max-w-3xl mx-auto p-6 md:p-8 space-y-10"
+        style={{
+          backgroundImage: 'url(/gustavo-machado.jpg)',
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center bottom',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
 
         {/* Belt Journey */}
         <section>
